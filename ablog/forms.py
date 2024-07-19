@@ -13,6 +13,5 @@ class PostForm(forms.ModelForm):
             'featured_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'content': SummernoteWidget(attrs={'class': 'summernote'}),
             'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
-          
 
         }

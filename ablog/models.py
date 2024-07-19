@@ -39,3 +39,13 @@ class Comment(models.Model):
     class Meta:
         ordering = ["post_date"]
 
+class Category(models.Model):
+    name = models.CharField(max_length=200,default='starwars')
+
+    
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('home')
+
