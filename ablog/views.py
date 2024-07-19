@@ -40,6 +40,3 @@ class EditPost(UpdateView):
     form_class = EditForm
     template_name = 'editpost.html'
         
-    def form_valid(self, form):
-        messages.success(self.request, 'Post updated successfully!')
-        return super().form_valid(form)
