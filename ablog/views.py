@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse_lazy,reverse
 from .models import Post
+from .forms import PostForm
 
 
 
@@ -20,5 +21,5 @@ class Postdetail(DetailView):
 class NewPost(CreateView):
     model = Post
     template_name = 'newpost.html'
-    fields = '__all__'
+    form_class = PostForm
     success_url = reverse_lazy('home')
