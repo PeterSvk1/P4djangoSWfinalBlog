@@ -1,4 +1,9 @@
-<h1>posts  </h1>
+{% extends "base.html" %}
+{% load static %}
+{% load cloudinary %}
+{% block head_title %}Star Wars{% endblock head_title %}
+
+{% block content %}
 
 <ul>
 
@@ -10,3 +15,5 @@
 {% endfor %}
 
 </ul>
+
+{% endblock content %}
