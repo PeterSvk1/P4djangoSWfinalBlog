@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block head_title %}Star Wars{% endblock head_title %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card border-warning">
+        <div class="card-header bg-warning text-center">
+            <h1 class="card-header bg-warning text-center">Edit Your Post</h1>
+        </div>
+        <div class="card-body">
+                {% if user.id == post.author.id %}
+                    <div class="form-group">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <a href="{% url 'home' %}" class="btn btn-dark mt-3">Back</a>
+                            <button class="btn btn-primary mt-3">Update</button>
+                        </form>
+                    </div>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
