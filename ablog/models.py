@@ -21,6 +21,12 @@ class Post(models.Model):
     featured_image = CloudinaryField('image', default=default_image)
     status = models.IntegerField(choices=STATUS, default=0)
 
+    class Meta:
+        ordering = ["-post_date"]
+
+    def __str__(self):
+        return self.title + ' | ' + str(self.author)
+
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
