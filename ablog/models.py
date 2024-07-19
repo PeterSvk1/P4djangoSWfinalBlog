@@ -7,6 +7,9 @@ from cloudinary.models import CloudinaryField
 # Create your models here.
 
 STATUS = ((0, "Draft"), (1, "Published"))
+default_image1= "https://res.cloudinary.com/dg5lyidc8/image/upload/v1721074029"
+default_image2= "/static/images/default.4feffe0b7f2d.png"
+default_image= default_image1 + default_image2
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
