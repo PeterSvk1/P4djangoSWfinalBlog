@@ -50,7 +50,26 @@
         {% endblock %}
     </div>
 </main>
-
+<!-- Pagination -->
+<div class="d-flex justify-content-center mt-4">
+    <ul class="pagination">
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <li class="page-item  ms-2">
+                    <a class="page-link bg-warning text-dark" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                </li>
+            {% endif %}
+            <li class="page-item active  ms-2">
+                <a class="page-link bg-warning text-dark" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+            </li>
+            {% if page_obj.has_next %}
+                <li class="page-item ms-2"> 
+                    <a class="page-link bg-warning text-dark" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+            {% endif %}
+        {% endif %}
+    </ul>
+</div>
 
 
 
