@@ -20,4 +20,5 @@ class Postdetail(DetailView):
 class NewPost(CreateView):
     model = Post
     template_name = 'newpost.html'
+    fields = '__all__'
     success_url = reverse_lazy('home')

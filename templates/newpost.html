@@ -1,1 +1,27 @@
-new post
+{% extends 'base.html' %}
+{% block head_title %}Star Wars{% endblock head_title %}
+{% block content %}
+
+
+
+<div class="container mt-4">
+
+    
+    <div class="card mb-4">
+        <h1 class="card-header bg-warning text-center">Make Your Post</h1>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+
+                <div class="form-group">
+                    <a href="{% url 'home' %}" class="btn btn-dark">Back</a>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
