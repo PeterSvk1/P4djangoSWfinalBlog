@@ -20,4 +20,5 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('ablog.urls')),
+    path('summernote/', include('django_summernote.urls')),
 ]
