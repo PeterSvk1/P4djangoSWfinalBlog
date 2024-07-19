@@ -1,6 +1,12 @@
 <h1>posts  </h1>
 
+<ul>
+
 {% for post in object_list%}
-{{post.title}}
+<li><a href="{% url 'details' post.pk %}">{{post.title}}</a>
 {{post.author}}
+
+</li>
 {% endfor %}
+
+</ul>

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Post
 
 
@@ -11,3 +11,7 @@ class Home(ListView):
     template_name = 'home.html'
     ordering = ['-post_date']
     paginate_by = 4
+
+class Postdetail(DetailView):
+    model = Post
+    template_name= 'details.html'
