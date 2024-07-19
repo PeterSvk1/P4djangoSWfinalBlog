@@ -20,3 +20,10 @@ class Post(models.Model):
     category = models.CharField(max_length=200, default='starwars')
     featured_image = CloudinaryField('image', default=default_image)
     status = models.IntegerField(choices=STATUS, default=0)
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    content = models.TextField()
+    post_date = models.DateTimeField(auto_now_add=True)
+
