@@ -7,10 +7,9 @@ from .models import Post
 
 # Create your views here.
 class Home(ListView):
-    model = Post 
+    queryset = Post.objects.all().order_by("post_date").filter(status=1) 
     template_name = 'home.html'
-    ordering = ['-post_date']
-    paginate_by = 4
+    paginate_by = 10
 
 class Postdetail(DetailView):
     model = Post
