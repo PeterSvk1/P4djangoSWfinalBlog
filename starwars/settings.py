@@ -59,6 +59,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SITE_ID = 1
+LOGIN_REDIRECT_URL = 'about'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL= '/ausers/login/'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 ROOT_URLCONF = 'starwars.urls'
 
 TEMPLATES = [
@@ -93,6 +101,12 @@ WSGI_APPLICATION = 'starwars.wsgi.application'
 DATABASES = {
    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.herokuapp.com",
+    "https://8000-petersvk1-djangofinal-kzehboocybf.ws.codeinstitute-ide.net",
+    "https://*.gitpod.com",
+]
 
 
 
