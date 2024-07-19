@@ -4,6 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse_lazy,reverse
 from .models import Post
 from .forms import PostForm, EditForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 
@@ -16,11 +17,11 @@ class Home(ListView):
     template_name = 'home.html'
     paginate_by = 10
 
-class Postdetail(DetailView):
+class Postdetail(DetailView,LoginRequiredMixin):
     model = Post
     template_name= 'details.html'
 
-class NewPost(CreateView):
+class NewPost(CreateView,LoginRequiredMixin):
     model = Post
     template_name = 'newpost.html'
     form_class = PostForm
@@ -35,12 +36,12 @@ class NewPost(CreateView):
             return HttpResponseRedirect(reverse('details', args=[str(pk)]))
 
 
-class EditPost(UpdateView):
+class EditPost(UpdateView,LoginRequiredMixin):
     model= Post
     form_class = EditForm
     template_name = 'editpost.html'
 
-class DeletePost(DeleteView):
+class DeletePost(DeleteView,LoginRequiredMixin):
     model = Post
     template_name = 'deletepost.html'
     success_url = reverse_lazy('home')
