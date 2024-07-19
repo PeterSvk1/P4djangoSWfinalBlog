@@ -18,7 +18,6 @@
             <p class="card-text">{{ post.excerpt|safe }}</p>
             <p class="card-date" style="background-color: #f0f0f0; padding: 5px;">{{ post.post_date }}</p>
             <p class="card-category">
-                <a href="{% url 'category' post.category|slugify %}" class="btn btn-warning btn-sm">{{ post.category }}</a>
             </p>
             <div class="card-footer d-flex justify-content-between">
                 <a href="{% url 'details' post.pk %}" class="btn btn-primary">Read More</a>

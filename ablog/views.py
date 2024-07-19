@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse_lazy,reverse
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm, EditForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -45,4 +45,9 @@ class DeletePost(DeleteView,LoginRequiredMixin):
     model = Post
     template_name = 'deletepost.html'
     success_url = reverse_lazy('home')
+
+class Categorys(CreateView):
+    model = Category
+    template_name = 'category.html'
+    fields = '__all__'
         

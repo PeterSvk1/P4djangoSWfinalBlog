@@ -1,7 +1,13 @@
 from django import forms
 from django_summernote.widgets import SummernoteWidget
-from .models import Post
+from .models import Post,Category
 from cloudinary.models import CloudinaryField
+
+
+choices = Category.objects.all().values_list('name','name')
+choice_list = []
+for item in choices:
+    choice_list.append(item)
 
 class PostForm(forms.ModelForm):
     class Meta:
