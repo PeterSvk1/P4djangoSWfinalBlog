@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.urls import reverse_lazy,reverse
 from .models import Post
 
 
@@ -14,3 +16,8 @@ class Home(ListView):
 class Postdetail(DetailView):
     model = Post
     template_name= 'details.html'
+
+class NewPost(CreateView):
+    model = Post
+    template_name = 'newpost.html'
+    success_url = reverse_lazy('home')
