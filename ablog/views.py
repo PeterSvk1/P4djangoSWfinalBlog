@@ -33,3 +33,13 @@ class NewPost(CreateView):
             post.save()
             pk= post.id 
             return HttpResponseRedirect(reverse('details', args=[str(pk)]))
+
+
+class EditPost(UpdateView):
+    model= Post
+    form_class = EditForm
+    template_name = 'editpost.html'
+        
+    def form_valid(self, form):
+        messages.success(self.request, 'Post updated successfully!')
+        return super().form_valid(form)
