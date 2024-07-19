@@ -8,6 +8,7 @@
             <h1 class="card-header bg-warning text-center">Edit Your Post</h1>
         </div>
         <div class="card-body">
+            {% if user.is_authenticated %}
                 {% if user.id == post.author.id %}
                     <div class="form-group">
                         <form method="POST">
@@ -17,8 +18,12 @@
                             <button class="btn btn-primary mt-3">Update</button>
                         </form>
                     </div>
-
-
+                {% else %}
+                    <p class="text-center">You do not have permission to edit this post.</p>
+                {% endif %}
+            {% else %}
+                <p class="text-center">Please <a href="{% url 'account_signup' %}" class="btn btn-primary">Register</a> to edit posts.</p>
+            {% endif %}
         </div>
     </div>
 </div>
