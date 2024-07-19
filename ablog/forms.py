@@ -15,3 +15,15 @@ class PostForm(forms.ModelForm):
             'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
 
         }
+
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title','content')
+
+        widgets ={
+            'title': forms.TextInput(attrs={'class':'form-control',}),
+            'featured_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'content': SummernoteWidget(attrs={'class': 'summernote'}),
+            'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
+        }

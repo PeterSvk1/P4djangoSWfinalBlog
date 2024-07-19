@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse_lazy,reverse
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, EditForm
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 
