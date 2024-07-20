@@ -113,6 +113,7 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://8000-petersvk1-p4djangoswfin-jd9dk3bvca1.ws.codeinstitute-ide.net',
     "https://*.herokuapp.com",
     "https://8000-petersvk1-djangofinal-kzehboocybf.ws.codeinstitute-ide.net",
     "https://*.gitpod.com",

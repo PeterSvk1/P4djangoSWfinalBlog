@@ -4,6 +4,7 @@ from .models import Post,Category
 from cloudinary.models import CloudinaryField
 
 
+
 choices = Category.objects.all().values_list('name','name')
 choice_list = []
 for item in choices:

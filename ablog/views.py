@@ -17,9 +17,11 @@ class Home(ListView):
     template_name = 'home.html'
     paginate_by = 10
 
-class Postdetail(DetailView,LoginRequiredMixin):
+class Postdetail(LoginRequiredMixin, DetailView):
     model = Post
-    template_name= 'details.html'
+    template_name = 'details.html'
+
+        
 
 class NewPost(CreateView,LoginRequiredMixin):
     model = Post
