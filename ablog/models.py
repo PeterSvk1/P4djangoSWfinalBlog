@@ -50,6 +50,7 @@ class Comment(models.Model):
     content = models.TextField()
     post_date = models.DateTimeField(auto_now_add=True)
     upvotes = models.ManyToManyField(User, related_name='comment_upvotes', blank=True)
+    downvotes = models.ManyToManyField(User, related_name='comment_downvotes', blank=True)
 
     def __str__(self):
         return '%s - %s' % (self.post.title,self.name )
@@ -59,6 +60,9 @@ class Comment(models.Model):
     
     def total_upvotes(self):
         return self.upvotes.count()
+    
+    def total_downvotes(self):
+        return self.downvotes.count()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

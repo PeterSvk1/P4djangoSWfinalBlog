@@ -44,14 +44,3 @@ class CommentForm(forms.ModelForm):
         widgets ={
             'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Please write something nice'}),
             }
-
-
-class UserUpdateForm(forms.ModelForm):
-    """
-    A form to update users acc information
-    """
-    email = forms.EmailField()
-
-    class Meta:
-        model = User
-        fields = ['username', 'email']

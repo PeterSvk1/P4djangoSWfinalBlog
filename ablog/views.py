@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView,DeleteView
-from .models import Post, Category, Comment
+from .models import Post, Category, Comment, Profile
 from .forms import PostForm,EditForm,CommentForm
 from django.urls import reverse_lazy,reverse
 from django.contrib import messages
@@ -48,11 +48,14 @@ class Postdetail(DetailView):
         totallikes = post.totallikes()
 
         liked = False
+        downvoted = False
         if self.request.user.is_authenticated:
             liked = post.likes.filter(id=self.request.user.id).exists()
             upvoted_comments = post.comments.filter(upvotes=self.request.user)
+            downvoted_comments = post.comments.filter(downvotes=self.request.user)
         else:
             upvoted_comments = []
+            downvoted_comments = []
 
         total_comments = post.total_comments()
         context['cat_menu'] = Category.objects.all()
@@ -60,6 +63,7 @@ class Postdetail(DetailView):
         context["liked"] = liked
         context["total_comments"] = total_comments
         context['upvoted_comments'] = upvoted_comments
+        context['downvoted_comments'] = downvoted_comments
 
         return context
 
@@ -191,3 +195,17 @@ def delete_comment(request, comment_id):
 
     return redirect('details', pk=post_id)
 ##
+
+@login_required
+def downvote_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    user = request.user
+
+    if comment.downvotes.filter(id=user.id).exists():
+        comment.downvotes.remove(user)
+        messages.success(request, 'You have removed your downvote from the comment.')
+    else:
+        comment.downvotes.add(user)
+        messages.success(request, 'You have downvoted the comment.')
+
+    return redirect('details', pk=comment.post.id)

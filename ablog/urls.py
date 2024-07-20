@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, Postdetail,NewPost,EditPost,DeletePost,Categorys,SectionView, ViewAllcategories, ViewLike,Viewaddcomment,about,upvote_comment,delete_comment
+from .views import Home, Postdetail,NewPost,EditPost,DeletePost,Categorys,SectionView, ViewAllcategories, ViewLike,Viewaddcomment,about,upvote_comment,delete_comment,downvote_comment
 
 urlpatterns = [
     
@@ -16,6 +16,8 @@ urlpatterns = [
     path('about',about,name='about'),
     path('comment/<int:comment_id>/upvote/', upvote_comment, name='upvote_comment'),
     path('comment/<int:comment_id>/delete/', delete_comment, name='delete_comment'),
+    path('comment/<int:comment_id>/downvote/', downvote_comment, name='downvote_comment'),
+
 
   
 
