@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView,DeleteView
 from .models import Post, Category, Comment
 from .forms import PostForm,EditForm,CommentForm
@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 class Home(ListView):
@@ -52,12 +53,19 @@ class Postdetail(DetailView):
         if hearts.likes.filter(id=self.request.user.id).exists():
             liked = True
         
-        
+        #
+        if self.request.user.is_authenticated:
+            upvoted_comments = post.comments.filter(upvotes=self.request.user)
+        else:
+            upvoted_comments = []
+
+        #
         total_comments = post.total_comments()
         context['cat_menu'] = Category.objects.all()
         context["totallikes"]=totallikes
         context["liked"]=liked
-        context["total_comments"] = total_comments 
+        context["total_comments"] = total_comments
+        context['upvoted_comments'] = upvoted_comments
         
 
         return context
@@ -154,4 +162,12 @@ def ViewLike(request,pk):
         post.likes.add(request.user)
         liked = True
     return HttpResponseRedirect(reverse('details', args=[str(pk)]))
-
+#
+@login_required
+def upvote_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.upvotes.filter(id=request.user.id).exists():
+        comment.upvotes.remove(request.user)
+    else:
+        comment.upvotes.add(request.user)
+    return redirect(reverse('details', args=[comment.post.id]))

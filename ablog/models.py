@@ -52,11 +52,17 @@ class Comment(models.Model):
    
     content = models.TextField()
     post_date = models.DateTimeField(auto_now_add=True)
+    #
+    upvotes = models.ManyToManyField(User, related_name='comment_upvotes', blank=True)
+    #
 
     def __str__(self):
         return '%s - %s' % (self.post.title,self.name )
     
     def get_absolute_url(self):
         return reverse('details', kwargs={'pk': self.post.pk})
+    
+    def total_upvotes(self):
+        return self.upvotes.count()
 
 
