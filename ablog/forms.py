@@ -38,10 +38,10 @@ class EditForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('name','content')
+        fields = ('content',)
 
         widgets ={
-            'name': forms.TextInput(attrs={'class':'form-control','placeholder':'use your username'}),
+            #'name': forms.TextInput(attrs={'class':'form-control','placeholder':'use your username'}),
             #'content': SummernoteWidget(),
             'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Please write something nice'}),
             }

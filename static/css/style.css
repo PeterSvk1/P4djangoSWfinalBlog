@@ -1,0 +1,257 @@
+/* static/css/style.css */
+
+/* General body styling */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    position: relative ;
+}
+
+
+
+#bg{
+    background-image: url(../background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+
+/* Navbar styling */
+.navbar {
+    margin-bottom: 1px;
+}
+
+/* Container styling */
+.container {
+    margin-top: 1px;
+}
+
+/* Blog card styling */
+
+
+.blog-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5); /* Red shadow on hover */
+}
+
+/* Blog card image */
+.blog-card img {
+    width: 100%;
+    height: auto;
+}
+
+/* Blog card body */
+.blog-card .card-body {
+    padding: 20px;
+}
+
+/* Blog card title */
+.blog-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.card-category {
+    background-color: #ffffcc; /* Light yellow background */
+    padding: 5px; /* Add padding for better appearance */
+    display: inline-block; /* Ensure inline display for the background color */
+    border-radius: 5px; /* Optional: add some border radius */
+}
+
+/* Blog card author */
+.blog-card .card-author {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+/* Blog card text */
+.blog-card .card-text {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+/* Blog card button */
+.blog-card .btn {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.blog-card .btn:hover {
+    background-color: #0056b3;
+}
+
+/*   regist */
+.container {
+    margin-top: 50px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Style the form inputs and labels */
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem 1rem; /* Adjusted padding */
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #06080a;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Style the register button */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+/*   regist */
+
+/* Footer styling */
+.footer {
+    clear: both;
+    bottom:0; right:0; left:0; position:absolute / fixed ;
+    width: 100%;
+    background-color: #ffc107; /* Yellow background */
+    padding: 20px 0;
+    color: #343a40; /* Dark text color */
+    text-align: center;
+    height: auto; /* Ensure height is auto or adjust as needed */
+    border-top: 4px solid #343a40; /* Dark border on top */
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.social-icons {
+    padding-top: 10px; /* Adjust top padding for spacing */
+    margin-bottom: 10px; /* Add bottom margin for spacing */
+}
+
+.footer a {
+    color: #343a40; /* Dark text color for social links */
+    text-decoration: none;
+    margin: 0 10px; /* Add margin between social icons */
+    display: block; /* Display block for vertical alignment */
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.social-link {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background-color: rgba(138, 31, 31, 0.1); /* Light background on hover */
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Optional: Align items vertically */
+    padding: 10px 20px; /* Adjust padding as needed */
+}
+
+.bg-light {
+    background-color: #f8f9fa; /* Light grey background */
+}
+
+.border-danger {
+    border-color: #dc3545; /* Red border color */
+}
+
+.shadow-red {
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.5); /* Red shadow */
+}
+
+
+ 
+
+@media (max-width: 576px) {
+    .form-group {
+        padding: 10px;
+        margin: 0 auto;
+    }
+    
+   .footer {
+        padding: 15px;
+        width: 100%;
+    }
+    .card-footer {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        align-items: flex-start; /* Align buttons to the left on small screens */
+    }
+    .editdelete {
+        margin-top: 5px;
+    }
+    .form-control {
+        font-size: 0.9rem;
+    }
+
+    
+}

@@ -22,6 +22,8 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, related_name='blogposts')
     status = models.IntegerField(choices=STATUS, default=0)
 
+
+
     
     def totallikes(self):
         return self.likes.count()

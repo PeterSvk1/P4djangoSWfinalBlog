@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
-{% load static%}
+{% load static %}
 {% block head_title %}Star Wars{% endblock head_title %}
 
 {% block content %}
 <div class="container mt-4">
     {% if messages %}
     <div class="container mt-4">
+        {% for message in messages %}
         <div id="alert-msg" class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Success!</strong> {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+        {% endfor %}
     </div>
-    
     {% endif %}
 
     <div class="card border-warning">
@@ -66,7 +67,7 @@
                             {% if user.is_authenticated %}
                             <a href="{% url 'comments' post.pk %}" class="btn btn-primary btn-block">Add comment here</a>
                             {% else %}
-                            <a href="{% url 'login' %}" class="btn btn-primary btn-block">Login to comment</a>
+                            <a href="{% url 'account_login' %}" class="btn btn-primary btn-block">Login to comment</a>
                             {% endif %}
                         </div>
                         <div class="col-12 col-md-4">
@@ -97,8 +98,11 @@
                         <ul class="list-group mb-4">
                             {% for comment in post.comments.all %}
                             <li class="list-group-item">
-                                <strong>{{ comment.name }}</strong> <small>{{ comment.post_date }}</small>
+                                <strong>{{ comment.author.username }}</strong> <small>{{ comment.post_date }}</small>
                                 <p>{{ comment.content | safe }}</p>
+                                {% if user.is_authenticated and user.id == comment.author.id %}
+                                <a href="{% url 'delete_comment' pk=comment.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                                {% endif %}
                             </li>
                             {% endfor %}
                         </ul>
@@ -108,5 +112,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

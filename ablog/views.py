@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView,DeleteView
 from .models import Post, Category, Comment
 from .forms import PostForm,EditForm,CommentForm
 from django.urls import reverse_lazy,reverse
@@ -11,22 +11,6 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 
 
-#class Home(ListView):
-#    model = Post 
-#    cats = Category.objects.all()
-#    template_name = 'home.html'
-#    ordering = ['-post_date',]
-#    paginate_by = 4
-
-    
-
-
-    
-#    def get_context_data(self,*args, **kwargs):
-#        cat_menu = Category.objects.all()
-#        context = super(Home,self).get_context_data(*args, **kwargs)
-#        context['cat_menu'] = Category.objects.all()
-#        return context
 class Home(ListView):
     model = Post 
     template_name = 'home.html'
@@ -130,13 +114,17 @@ class Viewaddcomment(CreateView):
     form_class= CommentForm
     template_name = 'addcomment.html'
 
+
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
-        messages.success(self.request,'Comment added!')
+ 
+        form.instance.name = self.request.user.username  # Set the username automatically
+        messages.success(self.request, 'Comment added!')
         return super().form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('details', kwargs={'pk': self.kwargs['pk']})
+
 
 def SectionView(request, cats):
     category_posts = Post.objects.filter(category = cats)
@@ -162,9 +150,3 @@ def ViewLike(request,pk):
         post.likes.add(request.user)
         liked = True
     return HttpResponseRedirect(reverse('details', args=[str(pk)]))
-
-
-
-
-
-   
