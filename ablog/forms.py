@@ -2,6 +2,7 @@ from django import forms
 from django_summernote.widgets import SummernoteWidget
 from .models import Post,Category,Comment
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
 
 
 
@@ -44,3 +45,13 @@ class CommentForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Please write something nice'}),
             }
 
+
+class UserUpdateForm(forms.ModelForm):
+    """
+    A form to update users acc information
+    """
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']

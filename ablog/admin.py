@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post,Category, Comment
+from .models import Post,Category, Comment, Profile
 from django_summernote.admin import SummernoteModelAdmin
 
 #
@@ -14,6 +14,6 @@ class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ('content','excerpt')
 
 
-
+admin.site.register(Profile)
 admin.site.register(Comment)
 admin.site.register(Category)

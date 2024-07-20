@@ -4,6 +4,7 @@ from django.urls import reverse
 from datetime import datetime,date
 from cloudinary.models import CloudinaryField
 
+
 # Create your models here.
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -58,5 +59,12 @@ class Comment(models.Model):
     
     def total_upvotes(self):
         return self.upvotes.count()
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = CloudinaryField('image', default=default_image)
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
 
 

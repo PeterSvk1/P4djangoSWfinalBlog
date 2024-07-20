@@ -17,6 +17,9 @@ urlpatterns = [
     path('comment/<int:comment_id>/upvote/', upvote_comment, name='upvote_comment'),
     path('comment/<int:comment_id>/delete/', delete_comment, name='delete_comment'),
 
+  
+
+
     
 
     
