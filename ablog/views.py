@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 
 
 class Home(ListView):
@@ -149,7 +149,7 @@ def ViewAllcategories(request):
 
     
     
-
+#@login_required
 def ViewLike(request,pk):
     post = get_object_or_404(Post, id=request.POST.get('postid'))
 
@@ -162,7 +162,7 @@ def ViewLike(request,pk):
         liked = True
     return HttpResponseRedirect(reverse('details', args=[str(pk)]))
 #
-@login_required
+#@login_required
 def upvote_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     user = request.user
@@ -176,7 +176,7 @@ def upvote_comment(request, comment_id):
 
     return redirect('details', pk=comment.post.id)
 ##
-@login_required
+#@login_required
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     post_id = comment.post.id
