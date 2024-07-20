@@ -56,8 +56,7 @@ class Postdetail(DetailView):
         #
         if self.request.user.is_authenticated:
             upvoted_comments = post.comments.filter(upvotes=self.request.user)
-        else:
-            upvoted_comments = []
+            context['upvoted_comments'] = upvoted_comments
 
         #
         total_comments = post.total_comments()
@@ -166,8 +165,13 @@ def ViewLike(request,pk):
 @login_required
 def upvote_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    if comment.upvotes.filter(id=request.user.id).exists():
-        comment.upvotes.remove(request.user)
+    user = request.user
+
+    if comment.upvotes.filter(id=user.id).exists():
+        comment.upvotes.remove(user)
+        messages.success(request, 'You have removed your upvote from the comment.')
     else:
-        comment.upvotes.add(request.user)
-    return redirect(reverse('details', args=[comment.post.id]))
+        comment.upvotes.add(user)
+        messages.success(request, 'You have upvoted the comment.')
+
+    return redirect('details', pk=comment.post.id)

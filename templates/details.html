@@ -107,6 +107,8 @@
                                         {% if comment in upvoted_comments %}Unvote{% else %}Upvote{% endif %} {{ comment.total_upvotes }}
                                     </button>
                                 </form>
+                                {% else %}
+                                <p>Upvotes: {{ comment.total_upvotes }}</p>
                                 {% endif %}
                             </li>
                             {% endfor %}
