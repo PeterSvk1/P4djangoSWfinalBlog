@@ -106,6 +106,12 @@
                                         {% if comment in upvoted_comments %}Unvote{% else %}Upvote{% endif %} {{ comment.total_upvotes }}
                                     </button>
                                 </form>
+                                {% if user.username == comment.name %}
+                                <form action="{% url 'delete_comment' comment.id %}" method="POST" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                                {% endif %}
                                 {% else %}
                                 <p>Upvotes: {{ comment.total_upvotes }}</p>
                                 {% endif %}

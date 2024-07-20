@@ -175,3 +175,17 @@ def upvote_comment(request, comment_id):
         messages.success(request, 'You have upvoted the comment.')
 
     return redirect('details', pk=comment.post.id)
+##
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    post_id = comment.post.id
+
+    if request.user == comment.name or request.user.is_superuser:
+        comment.delete()
+        messages.success(request, 'Comment deleted successfully!')
+    else:
+        messages.error(request, 'You do not have permission to delete this comment.')
+
+    return redirect('details', pk=post_id)
+##
