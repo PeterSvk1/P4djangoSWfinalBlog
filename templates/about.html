@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center"> <!-- Center aligning the card -->
+    <div class="col-md-8">
+      <div class="card mb-4 mt-3">
+        <div class="card-body">
+          <h1>About Us</h1>
+          <p class="card-text">Welcome to our galaxy far, far away, where passion for Star Wars meets dedicated storytelling. Star Wars Blog was born from our deep admiration for this legendary saga that has captivated generations.</p>
+          <p class="card-text">Driven by our love for the characters, the intricate lore, and the timeless themes of heroism and redemption, we aim to be your ultimate guide through the Star Wars universe. Whether you're a seasoned Jedi Master or a curious Padawan, our articles are crafted to entertain, inform, and inspire.</p>
+          <p class="card-text">Beyond exploring the latest news and dissecting fan theories, we strive to foster a community where fans can connect, share their passion, and discuss their favorite moments from the galaxy's expansive canon.</p>
+          <p class="card-text">Join us on this epic adventure as we journey through lightsaber duels, starship battles, and the enduring lessons of the Force. Your feedback and ideas are invaluable to us – reach out and become part of our Star Wars family today!</p>
+          <p class="card-text">Feel free to discuss or simply share your own Star Wars story. Together, let's celebrate the saga that continues to inspire and unite fans across the galaxy.</p>
+        </div>
+        <div class="card-footer bg-warning text-center">
+          <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 2em;">CLICK HERE TO SEE ALL STAR WARS BLOGS</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

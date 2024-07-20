@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %}
 {% load cloudinary %}
 
 {% block head_title %}Star Wars{% endblock head_title %}
@@ -19,27 +18,12 @@
             <p class="card-text">{{ post.excerpt|safe }}</p>
             <p class="card-date" style="background-color: #f0f0f0; padding: 5px;">{{ post.post_date }}</p>
             <p class="card-category">
+                <a href="{% url 'category' post.category|slugify %}" class="btn btn-warning btn-sm">{{ post.category }}</a>
             </p>
             <div class="card-footer d-flex justify-content-between">
                 <a href="{% url 'details' post.pk %}" class="btn btn-primary">Read More</a>
                 {% if user.is_authenticated and user.id == post.author.id %}
                 <div class="editdelete">
-                    <form action="{% url 'likeposts' post.pk %}" method="POST">
-                        {% csrf_token %}
-                        {% if user.is_authenticated %}
-                            {% if liked %}
-                            <button type="submit" name="postid" value="{{ post.id }}" class="btn btn-danger btn-block">
-                                Unlike {{ totallikes }}
-                            </button>
-                            {% else %}
-                            <button type="submit" name="postid" value="{{ post.id }}" class="btn btn-warning btn-block">
-                                <span class="text-danger">&hearts;</span> Like {{ totallikes }} <span class="text-danger">&hearts;</span>
-                            </button>
-                            {% endif %}
-                        {% else %}
-                        <a href="{% url 'login' %}" class="btn btn-warning btn-block">Login to like</a>
-                        {% endif %}
-                    </form>
                     <a href="{% url 'editpost' post.pk %}" class="btn btn-success btn-sm">Edit</a>
                     <a href="{% url 'deletepost' post.pk %}" class="btn btn-danger btn-sm">Delete</a>
                 </div>

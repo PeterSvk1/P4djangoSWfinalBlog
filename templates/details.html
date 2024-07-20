@@ -1,50 +1,112 @@
 {% extends 'base.html' %}
-{% load static %}
-{% load crispy_forms_tags %}
-{% block head_title %}{{ post.title }}{% endblock head_title %}
+{% load static%}
+{% block head_title %}Star Wars{% endblock head_title %}
 
 {% block content %}
-<h1>{{ post.title }}</h1>
-<p>{{ post.content }}</p>
-
-<div class="col-12 col-md-4 mb-2 mb-md-0">
-    <a href="{% url 'home' %}" class="btn btn-dark btn-block">Back</a>
-</div>
-
-<hr>
-<h2>Comments</h2>
-<div class="comments">
-    {% for comments in comment %}
-        <div class="comment">
-            <p><strong>{{ comment.author.username }}</strong> ({{ comment.post_date }})</p>
-            <p>{{ comment.content }}</p>
+<div class="container mt-4">
+    {% if messages %}
+    <div class="container mt-4">
+        <div id="alert-msg" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <div class="col-12 col-md-4">
-            <form action="{% url 'likeposts' post.pk %}" method="POST">
-                {% csrf_token %}
-                {% if user.is_authenticated %}
-                    {% if liked %}
-                    <button type="submit" name="postid" value="{{ post.id }}" class="btn btn-danger btn-block">
-                        Unlike {{ totallikes }}
-                    </button>
+    </div>
+    
+    {% endif %}
+
+    <div class="card border-warning">
+        <div class="card-header bg-warning text-center">
+            <h1>{{ post.title }}</h1>
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        {% if post.featured_image and post.featured_image.url %}
+                        <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+                        {% else %}
+                        <img src="{% static 'images/starwars.jpg' %}" class="card-img-top" alt="Default Image">
+                        {% endif %}
+                        <div class="card-body">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <small>{{ post.author }}</small>
+                                </li>
+                                <li class="list-inline-item">
+                                    <small>{{ post.post_date }}</small>
+                                </li>
+                                <li class="list-inline-item">
+                                    <small>
+                                        <a href="{% url 'category' post.category|slugify %}" class="btn btn-primary btn-sm">
+                                            {{ post.category }}
+                                        </a>
+                                    </small>
+                                </li>
+                                {% if user.is_authenticated and user.id == post.author.id %}
+                                <li class="list-inline-item">
+                                    <a href="{% url 'editpost' post.pk %}" class="btn btn-success btn-sm">Edit</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="{% url 'deletepost' post.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                            <hr>
+                            <div class="post-content">
+                                {{ post.content|safe }}
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mb-4 text-center text-md-left">
+                        <div class="col-12 col-md-4 mb-2 mb-md-0">
+                            <a href="{% url 'home' %}" class="btn btn-dark btn-block">Back</a>
+                        </div>
+                        <div class="col-12 col-md-4 mb-2 mb-md-0">
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'comments' post.pk %}" class="btn btn-primary btn-block">Add comment here</a>
+                            {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-primary btn-block">Login to comment</a>
+                            {% endif %}
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <form action="{% url 'likeposts' post.pk %}" method="POST">
+                                {% csrf_token %}
+                                {% if user.is_authenticated %}
+                                    {% if liked %}
+                                    <button type="submit" name="postid" value="{{ post.id }}" class="btn btn-danger btn-block">
+                                        Unlike {{ totallikes }}
+                                    </button>
+                                    {% else %}
+                                    <button type="submit" name="postid" value="{{ post.id }}" class="btn btn-warning btn-block">
+                                        <span class="text-danger">&hearts;</span> Like {{ totallikes }} <span class="text-danger">&hearts;</span>
+                                    </button>
+                                    {% endif %}
+                                {% else %}
+                                <a href="{% url 'login' %}" class="btn btn-warning btn-block">Login to like</a>
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <h2 class="text-center">Comments</h2>
+                    {% if not post.comments.all %}
+                        <p class="text-center">No comments yet.</p>
                     {% else %}
-                    <button type="submit" name="postid" value="{{ post.id }}" class="btn btn-warning btn-block">
-                        <span class="text-danger">&hearts;</span> Like {{ totallikes }} <span class="text-danger">&hearts;</span>
-                    </button>
+                        <ul class="list-group mb-4">
+                            {% for comment in post.comments.all %}
+                            <li class="list-group-item">
+                                <strong>{{ comment.name }}</strong> <small>{{ comment.post_date }}</small>
+                                <p>{{ comment.content | safe }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
                     {% endif %}
-                {% else %}
-                <a href="{% url 'login' %}" class="btn btn-warning btn-block">Login to like</a>
-                {% endif %}
-            </form>
+                </div>
+            </div>
         </div>
-        <hr>
-    {% endfor %}
+    </div>
 </div>
 
-<h2>Add a comment</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-primary">Post Comment</button>
-</form>
-{% endblock content %}
+{% endblock %}

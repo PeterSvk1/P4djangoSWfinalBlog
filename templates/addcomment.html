@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block head_title %}Star Wars{% endblock head_title %}
+{% block content %}
+<div class="container mt-4">
+    {% if user.is_authenticated %}
+    <h1 class="card-header bg-warning text-center">Add comment</h1>
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-warning" role="alert">
+        You need to <a href="{% url 'account_login' %}" class="alert-link">log in</a> to create a post.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
