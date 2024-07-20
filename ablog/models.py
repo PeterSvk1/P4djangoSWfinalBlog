@@ -22,13 +22,11 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, related_name='blogposts')
     status = models.IntegerField(choices=STATUS, default=0)
 
-
     def total_comments(self):
         return self.comments.count()
     
     def totallikes(self):
         return self.likes.count()
-    
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
@@ -39,7 +37,6 @@ class Post(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=200,default='starwars')
 
-    
     def __str__(self):
         return self.name
     
@@ -49,12 +46,9 @@ class Category(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-   
     content = models.TextField()
     post_date = models.DateTimeField(auto_now_add=True)
-    #
     upvotes = models.ManyToManyField(User, related_name='comment_upvotes', blank=True)
-    #
 
     def __str__(self):
         return '%s - %s' % (self.post.title,self.name )
