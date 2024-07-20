@@ -1,6 +1,6 @@
 from django import forms
 from django_summernote.widgets import SummernoteWidget
-from .models import Post,Category
+from .models import Post,Category,Comment
 from cloudinary.models import CloudinaryField
 
 
@@ -34,3 +34,15 @@ class EditForm(forms.ModelForm):
             'content': SummernoteWidget(attrs={'class': 'summernote'}),
             'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name','content')
+
+        widgets ={
+            'name': forms.TextInput(attrs={'class':'form-control','placeholder':'use your username'}),
+            #'content': SummernoteWidget(),
+            'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Please write something nice'}),
+            }
+
