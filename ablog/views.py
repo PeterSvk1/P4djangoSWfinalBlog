@@ -102,6 +102,13 @@ class DeletePost(DeleteView):
     model = Post
     template_name = 'deletepost.html'
     success_url = reverse_lazy('home')
+
+    #
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author or self.request.user.is_superuser
+    #
+
         
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, 'Post deleted successfully!')

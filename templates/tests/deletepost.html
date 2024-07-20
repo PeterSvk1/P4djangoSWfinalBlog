@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% block head_title %}Delete Post{% endblock head_title %}
+{% block head_title %}Star Wars{% endblock head_title %}
 
 {% block content %}
 <div class="container mt-4">
-    {% if user.is_authenticated %}
+
         {% if user.id == post.author.id %}
         <div class="card">
             <h1 class="card-header bg-warning text-center">Delete your post?</h1>
@@ -13,6 +13,8 @@
                 <div class="form-group">
                     <form method="POST">
                         {% csrf_token %}
+                       
+
                         <div class="text-center mt-4">
                             <a href="{% url 'home' %}" class="btn btn-dark mx-2">Back</a>
                             <button type="submit" class="btn btn-danger mx-2">Delete</button>
@@ -21,11 +23,7 @@
                 </div>
             </div>
         </div>
-        {% else %}
-            <div class="alert alert-danger">You do not have permission to delete this post.</div>
-        {% endif %}
-    {% else %}
-        <div class="alert alert-warning">You must be logged in to access this page.</div>
+
     {% endif %}
 </div>
 {% endblock %}
