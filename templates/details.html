@@ -101,7 +101,7 @@
                                 <strong>{{ comment.name }}</strong> <small>{{ comment.post_date }}</small>
                                 <p>{{ comment.content|safe }}</p>
                                 {% if user.is_authenticated and user.username == comment.name %}
-                                <!-- Add any additional options for the comment owner here -->
+                            
                                 {% endif %}
                             </li>
                             {% endfor %}

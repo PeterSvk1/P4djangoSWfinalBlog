@@ -49,6 +49,7 @@ class Category(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
+   
     content = models.TextField()
     post_date = models.DateTimeField(auto_now_add=True)
 
@@ -57,4 +58,5 @@ class Comment(models.Model):
     
     def get_absolute_url(self):
         return reverse('details', kwargs={'pk': self.post.pk})
+
 

@@ -1,21 +1,36 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
-{% load i18n %}
-
-{% block head_title %}{% trans "Signup" %}{% endblock head_title %}
+{% block head_title %}Register{% endblock head_title %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+<div class="container mt-4 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="card border-warning shadow-red">
+        <div class="card-header bg-warning text-center">
+            <h1 class="text-dark">Register</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                <strong>Success!</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {% endfor %}
+            </div>
+            {% endif %}
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+            <p class="text-center mb-4">Already have an account? Then please <a href="{{ login_url }}" class="text-warning">sign in</a>.</p>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
-
-{% endblock content %}
+            <form id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button type="submit" class="btn btn-warning btn-block"> &raquo;Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

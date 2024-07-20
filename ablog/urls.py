@@ -14,6 +14,7 @@ urlpatterns = [
     path('like/<int:pk>', ViewLike, name='likeposts'),
     path('posts/<int:pk>/comment/', Viewaddcomment.as_view(), name='comments'),
     path('about',about,name='about'),
+
     
 
     

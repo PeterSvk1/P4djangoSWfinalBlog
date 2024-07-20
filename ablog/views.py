@@ -67,8 +67,7 @@ class NewPost(CreateView, LoginRequiredMixin):
     model = Post
     form_class = PostForm
     template_name = 'newpost.html'
-    #success_url = reverse_lazy('home')
-
+    
     def form_valid(self, form):
         if form.is_valid():
             post= form.save(commit=False)
@@ -106,7 +105,7 @@ class DeletePost(DeleteView):
 
 class Categorys(CreateView):
     model = Category
-    #success_url = reverse_lazy('home')
+    
     template_name = 'category.html'
     fields = '__all__'
 
@@ -120,7 +119,7 @@ class Viewaddcomment(CreateView):
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
  
-        form.instance.name = self.request.user.username  # Set the username automatically
+        form.instance.name = self.request.user.username 
         messages.success(self.request, 'Comment added!')
         return super().form_valid(form)
 
@@ -152,3 +151,4 @@ def ViewLike(request,pk):
         post.likes.add(request.user)
         liked = True
     return HttpResponseRedirect(reverse('details', args=[str(pk)]))
+
