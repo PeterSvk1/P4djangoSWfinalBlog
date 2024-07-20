@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView,DeleteView
-from .models import Post, Category, Comment, Profile
-from .forms import PostForm,EditForm,CommentForm
+from .models import Post, Category, Comment, Profile, ContactMessage
+from .forms import PostForm,EditForm,CommentForm,ContactForm
 from django.urls import reverse_lazy,reverse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -10,6 +10,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 class Home(ListView):
@@ -209,3 +211,26 @@ def downvote_comment(request, comment_id):
         messages.success(request, 'You have downvoted the comment.')
 
     return redirect('details', pk=comment.post.id)
+
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+
+            # Save the contact message
+            ContactMessage.objects.create(email=email, message=message)
+
+            # Send a confirmation email
+            subject = 'Thank you for contacting us!'
+            message = f'Hi,\n\nThank you for reaching out. We have received your message and will get back to you soon.\n\nYour message:\n{message}'
+            from_email = settings.DEFAULT_FROM_EMAIL
+            send_mail(subject, message, from_email, [email], fail_silently=False)
+
+            messages.success(request, 'Your message has been sent successfully!')
+            return redirect('contact')
+    else:
+        form = ContactForm()
+    
+    return render(request, 'contact.html', {'form': form})

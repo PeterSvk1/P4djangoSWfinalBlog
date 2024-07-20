@@ -63,12 +63,20 @@ class Comment(models.Model):
     
     def total_downvotes(self):
         return self.downvotes.count()
-
+###############################################################
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = CloudinaryField('image', default=default_image)
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+class ContactMessage(models.Model):
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Message from {self.email} on {self.created_at}"
 
 

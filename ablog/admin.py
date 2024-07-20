@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post,Category, Comment, Profile
+from .models import Post,Category, Comment, Profile, ContactMessage
 from django_summernote.admin import SummernoteModelAdmin
 
 #
@@ -12,6 +12,11 @@ class PostAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'content']
     list_filter = ('status',)
     summernote_fields = ('content','excerpt')
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('email', 'created_at')
+    search_fields = ('email', 'message')
 
 
 admin.site.register(Profile)
