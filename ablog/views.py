@@ -13,7 +13,6 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
 
-
 class Home(ListView):
     model = Post 
     template_name = 'home.html'
@@ -37,7 +36,6 @@ class Home(ListView):
         context['cat_menu'] = cat_menu
         context['search'] = self.request.GET.get('search', '')
         return context
-
 
 class Postdetail(DetailView):
     model = Post
@@ -69,8 +67,6 @@ class Postdetail(DetailView):
 
         return context
 
-
-
 class NewPost(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
@@ -85,17 +81,12 @@ class NewPost(LoginRequiredMixin, CreateView):
             messages.success(self.request, 'Your post has been submitted and is awaiting approval by the admin.')
             pk= post.id 
             return HttpResponseRedirect(reverse('details', args=[str(pk)]))
-            
-
-
-
-
 
 class EditPost(UpdateView):
     model= Post
     form_class = EditForm
     template_name = 'editpost.html'
-        
+
     def form_valid(self, form):
         messages.success(self.request, 'Post updated successfully!')
         return super().form_valid(form)
@@ -103,18 +94,14 @@ class EditPost(UpdateView):
 def about(request):
     return render(request, 'about.html')
    
-
 class DeletePost(DeleteView):
     model = Post
     template_name = 'deletepost.html'
     success_url = reverse_lazy('home')
 
-    #
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author or self.request.user.is_superuser
-    #
-
         
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, 'Post deleted successfully!')
@@ -132,7 +119,6 @@ class Viewaddcomment(CreateView):
     form_class= CommentForm
     template_name = 'addcomment.html'
 
-
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
  
@@ -143,18 +129,13 @@ class Viewaddcomment(CreateView):
     def get_success_url(self):
         return reverse_lazy('details', kwargs={'pk': self.kwargs['pk']})
 
-
 def SectionView(request, cats):
     category_posts = Post.objects.filter(category = cats)
     return render(request,'categories.html', {'cats':cats.title(), 'category_posts':category_posts})
 
-
-
 def ViewAllcategories(request):
     cat_all = Category.objects.all()
     return render(request,'allcategories.html', {'cat_all':cat_all})
-
-    
     
 @login_required
 def ViewLike(request, pk):
@@ -169,7 +150,7 @@ def ViewLike(request, pk):
         liked = True
 
     return HttpResponseRedirect(reverse('details', args=[str(pk)]))
-#
+
 @login_required
 def upvote_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
@@ -183,7 +164,7 @@ def upvote_comment(request, comment_id):
         messages.success(request, 'You have upvoted the comment.')
 
     return redirect('details', pk=comment.post.id)
-##
+
 @login_required
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
@@ -196,7 +177,6 @@ def delete_comment(request, comment_id):
         messages.error(request, 'You do not have permission to delete this comment.')
 
     return redirect('details', pk=post_id)
-##
 
 @login_required
 def downvote_comment(request, comment_id):
