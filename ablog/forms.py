@@ -41,8 +41,6 @@ class CommentForm(forms.ModelForm):
         fields = ('content',)
 
         widgets ={
-            #'name': forms.TextInput(attrs={'class':'form-control','placeholder':'use your username'}),
-            #'content': SummernoteWidget(),
             'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Please write something nice'}),
             }
 

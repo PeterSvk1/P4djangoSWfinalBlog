@@ -23,9 +23,10 @@ class Home(ListView):
             return Post.objects.filter(
                 Q(title__icontains=query) | 
                 Q(content__icontains=query) |
-                Q(author__username__icontains=query)
+                Q(author__username__icontains=query),status=1
             ).distinct().order_by('-post_date')
-        return Post.objects.all().order_by('-post_date')
+        return Post.objects.filter(status=1).order_by('-post_date')
+        #return Post.objects.all().order_by('-post_date')
 
     def get_context_data(self, *args, **kwargs):
         context = super(Home, self).get_context_data(*args, **kwargs)
@@ -72,7 +73,9 @@ class NewPost(CreateView, LoginRequiredMixin):
         if form.is_valid():
             post= form.save(commit=False)
             post.author= get_object_or_404(User, id=self.request.user.id)
+            post.status = 0  # Set post status to 'Draft'
             post.save()
+            messages.success(self.request, 'Your post has been submitted and is awaiting approval by the admin.')
             pk= post.id 
             return HttpResponseRedirect(reverse('details', args=[str(pk)]))
             
