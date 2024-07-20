@@ -10,7 +10,7 @@ body {
 
 
 #bg{
-    background-image: url(../background.jpg);
+    background-image: url(https://res.cloudinary.com/dg5lyidc8/image/upload/v1720825881/static/background.d34a8d4af637.jpg);
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
     background-position: center center;
@@ -54,7 +54,7 @@ body {
 }
 
 .card-category {
-    background-color: #ffffcc; /* Light yellow background */
+    
     padding: 5px; /* Add padding for better appearance */
     display: inline-block; /* Ensure inline display for the background color */
     border-radius: 5px; /* Optional: add some border radius */
@@ -75,8 +75,8 @@ body {
 
 /* Blog card button */
 .blog-card .btn {
-    background-color: #007bff;
-    color: #ffffff;
+    
+    color: #0b0a0a;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
