@@ -1,116 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
-
-
-/* static/css/style.css */
-
-/* General body styling */
 html, body {
     height: 100%;
     margin: 0;
 }
 
 body {
-    /*background-color: #f8f9fa;
-    font-family: Arial, sans-serif;
-    position: relative ;*/
     display: flex;
     flex-direction: column;
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
+
 main#content {
     flex: 1 0 auto;
 }
 
-
-
-#bg{
+#bg {
     background-image: url(https://res.cloudinary.com/dg5lyidc8/image/upload/v1720825881/static/background.d34a8d4af637.jpg);
     background-repeat: no-repeat;
-    background-size: 100vw 100vh;
+    background-size: cover; /* Ensure the background covers the entire screen */
     background-position: center center;
     background-attachment: fixed;
-}
-
-
-/* Navbar styling */
-.navbar {
-    margin-bottom: 1px;
 }
 
 /* Container styling */
 .container {
     margin-top: 1px;
+    padding: 0; /* Remove padding to use full width */
+    width: 100%; /* Ensure full width */
 }
 
-/* Blog card styling */
-
-
-.blog-card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.5); /* Red shadow on hover */
-}
-
-/* Blog card image */
-.blog-card img {
-    width: 100%;
-    height: auto;
-}
-
-/* Blog card body */
-.blog-card .card-body {
-    padding: 20px;
-}
-
-/* Blog card title */
-.blog-card .card-title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.card-category {
-    
-    padding: 5px; /* Add padding for better appearance */
-    display: inline-block; /* Ensure inline display for the background color */
-    border-radius: 5px; /* Optional: add some border radius */
-}
-
-/* Blog card author */
-.blog-card .card-author {
-    font-size: 0.9rem;
-    color: #6c757d;
-    margin-bottom: 20px;
-}
-
-/* Blog card text */
-.blog-card .card-text {
-    font-size: 1rem;
-    margin-bottom: 20px;
-}
-
-/* Blog card button */
-.blog-card .btn {
-    
-    color: #0b0a0a;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.blog-card .btn:hover {
-    background-color: #0056b3;
-}
-
-/*   regist */
-.container {
-    margin-top: 10px;
-    max-width: 85%; /* Adjust as needed for desired width */
-}
-
+/* Card styling */
 .card {
     border: none;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure the card uses full width */
+    margin: 0; /* Remove margin for full-width layout */
 }
 
 .card-body {
@@ -118,9 +43,8 @@ main#content {
 }
 
 .wide-card {
-    width: calc(100% ); /* Reduce width by 2 cm from both sides */
-    max-width: 100%; /* Ensure it doesn't exceed 100% width */
-   
+    width: 100%; /* Ensure card takes full width */
+    max-width: 100%; /* Prevent exceeding viewport width */
 }
 
 /* Style the form inputs and labels */
@@ -147,7 +71,7 @@ main#content {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-/* Style the register button */
+/* Style the buttons */
 .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
@@ -166,7 +90,6 @@ main#content {
     height: auto;
     max-width: 100%;
     max-height: 100%;
-    
 }
 
 .card-img-top img {
@@ -183,6 +106,7 @@ main#content {
     line-height: 1.5;
     border-radius: 0.25rem;
 }
+
 .btn-success {
     background-color: #28a745;
     border-color: #28a745;
@@ -192,6 +116,7 @@ main#content {
     background-color: #218838;
     border-color: #1e7e34;
 }
+
 .btn-danger {
     background-color: #dc3545;
     border-color: #dc3545;
@@ -201,12 +126,11 @@ main#content {
     background-color: #c82333;
     border-color: #bd2130;
 }
-/*   regist */
 
 /* Footer styling */
 .footer {
     clear: both;
-    bottom:0; right:0; left:0; position:absolute / fixed ;
+    bottom: 0; right: 0; left: 0; position: fixed; /* Fixed position at the bottom */
     width: 100%;
     background-color: #ffc107; /* Yellow background */
     padding: 20px 0;
@@ -266,29 +190,42 @@ main#content {
     box-shadow: 0 4px 8px rgba(220, 53, 69, 0.5); /* Red shadow */
 }
 
-
- 
-
+/* Mobile Styles */
 @media (max-width: 576px) {
     .form-group {
         padding: 10px;
         margin: 0 auto;
     }
-    
-   .footer {
+
+    .footer {
         padding: 15px;
         width: 100%;
     }
+
     .card-footer {
         flex-direction: column; /* Stack buttons vertically on small screens */
         align-items: flex-start; /* Align buttons to the left on small screens */
     }
+
     .editdelete {
         margin-top: 5px;
     }
+
     .form-control {
         font-size: 0.9rem;
     }
 
-    
+    .container {
+        max-width: 100%; /* Ensure the container uses full width on small screens */
+        padding: 0; /* Remove padding for full-width layout */
+    }
+
+    .card {
+        width: 100%; /* Ensure cards use full width */
+        margin: 0; /* Remove margin for full-width layout */
+    }
+
+    .card-img-top {
+        width: 100%; /* Ensure images use full width */
+    }
 }

@@ -4,7 +4,7 @@
 {% block head_title %}Star Wars{% endblock head_title %}
 
 {% block content %}
-<div class="container mt-4">
+<div class="container-fluid p-0 mt-4"> <!-- Use container-fluid for full-width -->
     {% if messages %}
     <div class="container mt-4">
         {% for message in messages %}
@@ -22,7 +22,7 @@
         </div>
         <div class="card-body">
             <div class="row justify-content-center">
-                <div class="col-md-8 container">
+                <div class="col-12"> <!-- Use col-12 to ensure full width -->
                     <div class="card-img-top mb-3">
                         {% cloudinary post.featured_image %}
                     </div>

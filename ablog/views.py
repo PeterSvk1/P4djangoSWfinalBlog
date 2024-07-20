@@ -65,7 +65,7 @@ class Postdetail(DetailView):
 
 
 
-class NewPost(CreateView, LoginRequiredMixin):
+class NewPost(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = 'newpost.html'

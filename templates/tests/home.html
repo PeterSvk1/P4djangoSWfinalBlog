@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cloudinary %}
+
+{% block head_title %}Star Wars{% endblock head_title %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1 class="card-header bg-warning text-center">All Blog Posts</h1>
+    {% for post in object_list %}
+    <div class="card mb-4 blog-card">
+        
+        <div class="card-body">
+            <span class="card-img-top mb-3" > {% cloudinary post.featured_image %}</span>
+            <h5 class="card-title">{{ post.title|safe }}</h5>
+            <p class="card-author" style="background-color: #f0f0f0; padding: 5px;"><bold>By {{ post.author }}</bold></p>
+            <p class="card-text">{{ post.excerpt|safe }}</p>
+            <p class="card-date" style="background-color: #f0f0f0; padding: 5px;">{{ post.post_date }}</p>
+            <p class="card-category">
+                <a href="{% url 'category' post.category|slugify %}" class="btn btn-warning btn-sm"><bold>{{ post.category }}</bold></a>
+            </p>
+            <div class="card-footer d-flex justify-content-between">
+                <a href="{% url 'details' post.pk %}" class="btn btn-primary">Read More</a>
+                {% if user.is_authenticated and user.id == post.author.id %}
+                <div class="editdelete">
+                    <a href="{% url 'editpost' post.pk %}" class="btn btn-success btn-sm">Edit</a>
+                    <a href="{% url 'deletepost' post.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
