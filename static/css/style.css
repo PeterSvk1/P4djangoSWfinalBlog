@@ -1,10 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+
+
 /* static/css/style.css */
 
 /* General body styling */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
+    /*background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    position: relative ;*/
+    display: flex;
+    flex-direction: column;
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
-    position: relative ;
+}
+main#content {
+    flex: 1 0 auto;
 }
 
 
@@ -89,7 +104,8 @@ body {
 
 /*   regist */
 .container {
-    margin-top: 50px;
+    margin-top: 10px;
+    max-width: 85%; /* Adjust as needed for desired width */
 }
 
 .card {
@@ -99,6 +115,12 @@ body {
 
 .card-body {
     padding: 2rem;
+}
+
+.wide-card {
+    width: calc(100% ); /* Reduce width by 2 cm from both sides */
+    max-width: 100%; /* Ensure it doesn't exceed 100% width */
+   
 }
 
 /* Style the form inputs and labels */
@@ -137,6 +159,20 @@ body {
 .btn-primary:hover {
     background-color: #0069d9;
     border-color: #0062cc;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    
+}
+
+.card-img-top img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .btn-block {
@@ -178,6 +214,7 @@ body {
     text-align: center;
     height: auto; /* Ensure height is auto or adjust as needed */
     border-top: 4px solid #343a40; /* Dark border on top */
+    flex-shrink: 0;
 }
 
 .footer p {

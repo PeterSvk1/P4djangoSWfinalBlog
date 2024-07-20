@@ -1,7 +1,5 @@
 {% load static %}
 
-
-
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
@@ -12,7 +10,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block head_title %}{{ title }}{% endblock head_title %}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-5Mlpkqd4Vp6kHwAeX5i6/3EYXwz7K8A23uX4Zg42YhL9f4kzW+LbyUfPLy35F/wu6eU3R2p82hjDWcW67G6Y4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -74,6 +71,7 @@
         </div>
     </div>
 </nav>
+
 <!-- Messages -->
 {% if messages %}
 <div class="container mt-3">
@@ -89,21 +87,22 @@
 </div>
 {% endif %}
 
-<main>
+<!-- Main Content -->
+<main id="content">
     <div class="container">
         <br>
         {% block content %}
         {% endblock %}
-    </div>
+        <hr>
+    </div> 
 </main>
-
-
 
 <!-- Pagination -->
 <div class="d-flex justify-content-center mt-4">
     <ul class="pagination">
         {% if is_paginated %}
             {% if page_obj.has_previous %}
+
                 <li class="page-item  ms-2">
                     <a class="page-link bg-warning text-dark" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                 </li>
@@ -115,10 +114,16 @@
                 <li class="page-item ms-2"> 
                     <a class="page-link bg-warning text-dark" href="?page={{ page_obj.next_page_number }}">Next</a>
                 </li>
+
             {% endif %}
         {% endif %}
     </ul>
 </div>
+
+
+
+
+
 
 <!-- Footer -->
 <footer class="footer bg-yellow text-dark py-4">
@@ -146,7 +151,6 @@
         </div>
     </div>
 </footer>
-
 
 <script src="https://kit.fontawesome.com/cd9b9e993c.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

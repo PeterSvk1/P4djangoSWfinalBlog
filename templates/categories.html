@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load cloudinary %}
 {% load crispy_forms_tags %}
 
 {% block head_title %}Posts in {{ cats }}{% endblock head_title %}
@@ -16,12 +17,8 @@
                 {% for post in category_posts %}
                 <div class="col-md-4 mb-4">
                     <div class="card blog-card h-100">
-                        {% if post.image %}
-                        <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
-                        {% else %}
-                        <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="Default Image">
-                        {% endif %}
                         <div class="card-body">
+                            <span class="card-img-top mb-3" > {% cloudinary post.featured_image %}</span>
                             <h5 class="card-title">{{ post.title }}</h5>
                             <p class="card-author" style="background-color: #f0f0f0; padding: 5px;">By {{ post.author }}</p>
                             <p class="card-text">{{ post.excerpt|safe }}</p>
