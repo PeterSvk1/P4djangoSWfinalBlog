@@ -24,6 +24,22 @@
                 <a href="{% url 'details' post.pk %}" class="btn btn-primary">Read More</a>
                 {% if user.is_authenticated and user.id == post.author.id %}
                 <div class="editdelete">
+                    <form action="{% url 'likeposts' post.pk %}" method="POST">
+                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                            {% if liked %}
+                            <button type="submit" name="postid" value="{{ post.id }}" class="btn btn-danger btn-block">
+                                Unlike {{ totallikes }}
+                            </button>
+                            {% else %}
+                            <button type="submit" name="postid" value="{{ post.id }}" class="btn btn-warning btn-block">
+                                <span class="text-danger">&hearts;</span> Like {{ totallikes }} <span class="text-danger">&hearts;</span>
+                            </button>
+                            {% endif %}
+                        {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-warning btn-block">Login to like</a>
+                        {% endif %}
+                    </form>
                     <a href="{% url 'editpost' post.pk %}" class="btn btn-success btn-sm">Edit</a>
                     <a href="{% url 'deletepost' post.pk %}" class="btn btn-danger btn-sm">Delete</a>
                 </div>

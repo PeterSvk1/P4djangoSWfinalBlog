@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, ViewLike
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.urls import reverse_lazy,reverse
 from .models import Post, Category
@@ -20,6 +20,26 @@ class Home(ListView):
 class Postdetail(LoginRequiredMixin, DetailView):
     model = Post
     template_name = 'details.html'
+
+    def get_context_data(self,*args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(Postdetail,self).get_context_data(*args, **kwargs)
+        
+        hearts = get_object_or_404(Post, id=self.kwargs['pk'])
+        totallikes= hearts.totallikes()
+
+        liked = False
+        if hearts.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        
+        
+        
+        context['cat_menu'] = Category.objects.all()
+        context["totallikes"]=totallikes
+        context["liked"]=liked
+        
+
+        return context
 
         
 
@@ -52,4 +72,16 @@ class Categorys(CreateView):
     model = Category
     template_name = 'category.html'
     fields = '__all__'
+
+def ViewLike(request,pk):
+    post = get_object_or_404(Post, id=request.POST.get('postid'))
+
+    liked = False
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+        liked = False
+    else:
+        post.likes.add(request.user)
+        liked = True
+    return HttpResponseRedirect(reverse('details', args=[str(pk)]))
         

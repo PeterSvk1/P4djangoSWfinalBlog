@@ -19,6 +19,24 @@
             <p><strong>{{ comment.author.username }}</strong> ({{ comment.post_date }})</p>
             <p>{{ comment.content }}</p>
         </div>
+        <div class="col-12 col-md-4">
+            <form action="{% url 'likeposts' post.pk %}" method="POST">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                    {% if liked %}
+                    <button type="submit" name="postid" value="{{ post.id }}" class="btn btn-danger btn-block">
+                        Unlike {{ totallikes }}
+                    </button>
+                    {% else %}
+                    <button type="submit" name="postid" value="{{ post.id }}" class="btn btn-warning btn-block">
+                        <span class="text-danger">&hearts;</span> Like {{ totallikes }} <span class="text-danger">&hearts;</span>
+                    </button>
+                    {% endif %}
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-warning btn-block">Login to like</a>
+                {% endif %}
+            </form>
+        </div>
         <hr>
     {% endfor %}
 </div>

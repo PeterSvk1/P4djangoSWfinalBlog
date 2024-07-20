@@ -19,14 +19,17 @@ class Post(models.Model):
     excerpt = models.TextField(blank=True)
     category = models.CharField(max_length=200, default='starwars')
     featured_image = CloudinaryField('image', default=default_image)
+    likes = models.ManyToManyField(User, related_name='blogposts')
     status = models.IntegerField(choices=STATUS, default=0)
 
-    class Meta:
-        ordering = ["-post_date"]
+    
+    def totallikes(self):
+        return self.likes.count()
+    
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
-
+    
     def get_absolute_url(self):
         return reverse('home')
 
