@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-  <div class="row justify-content-center"> <!-- Center aligning the card -->
+  <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card mb-4 mt-3">
         <div class="card-body">
@@ -13,7 +13,7 @@
           <p class="card-text">Feel free to discuss or simply share your own Star Wars story. Together, let's celebrate the saga that continues to inspire and unite fans across the galaxy.</p>
         </div>
         <div class="card-footer bg-warning text-center">
-          <a class="navbar-brand" href="{% url 'home' %}" style="font-size: 2em;">Redirect to Posts</a>
+          <a class="btn btn-dark btn-lg" href="{% url 'home' %}">Redirect to Posts</a>
         </div>
       </div>
     </div>

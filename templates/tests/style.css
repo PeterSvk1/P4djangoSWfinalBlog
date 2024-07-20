@@ -29,7 +29,7 @@ main#content {
 .container {
     margin-top: 5px;
     padding: 0; /* Remove padding to use full width */
-    max-width: 100%; /* Ensure full width */
+    width: 100%; /* Ensure full width */
 }
 
 /* Card styling */
@@ -40,20 +40,8 @@ main#content {
     margin: 0; /* Remove margin for full-width layout */
 }
 
-.custom-card {
-    border: 1px solid #ddd;
-    border-radius: 0.25rem;
-    width: 100%;
-    max-width: 100%;
-    margin: auto;
-}
-
 .card-body {
     padding: 1rem;
-}
-.card-body .form-control {
-    width: 100%; /* Full width of the container */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .wide-card {
