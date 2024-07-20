@@ -23,7 +23,8 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
 
 
-
+    def total_comments(self):
+        return self.comments.count()
     
     def totallikes(self):
         return self.likes.count()

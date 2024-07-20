@@ -42,6 +42,7 @@ class Postdetail(DetailView):
     def get_context_data(self,*args, **kwargs):
         cat_menu = Category.objects.all()
         context = super(Postdetail,self).get_context_data(*args, **kwargs)
+        post = self.get_object()
         
         hearts = get_object_or_404(Post, id=self.kwargs['pk'])
         totallikes= hearts.totallikes()
@@ -51,10 +52,11 @@ class Postdetail(DetailView):
             liked = True
         
         
-        
+        total_comments = post.total_comments()
         context['cat_menu'] = Category.objects.all()
         context["totallikes"]=totallikes
         context["liked"]=liked
+        context["total_comments"] = total_comments 
         
 
         return context
