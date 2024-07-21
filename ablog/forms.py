@@ -14,11 +14,12 @@ for item in choices:
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields= ('title','featured_image','content','excerpt')
+        fields= ('title','featured_image','category','content','excerpt')
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Title please'}),
             'featured_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'category': forms.Select(choices=choice_list,attrs={'class':'form-control'}),
             'content': SummernoteWidget(attrs={'class': 'summernote'}),
             'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
 
