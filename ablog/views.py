@@ -14,28 +14,59 @@ from django.core.mail import send_mail
 from django.conf import settings
 import os
 
+#class Home(ListView):
+#    model = Post 
+#    template_name = 'home.html'
+#    ordering = ['-post_date']
+#    paginate_by = 4
+#
+#    def get_queryset(self):
+#        query = self.request.GET.get('search')
+#        if query:
+#            return Post.objects.filter(
+#                Q(title__icontains=query) | 
+#                Q(content__icontains=query) |
+#                Q(author__username__icontains=query),status=1
+#            ).distinct().order_by('-post_date')
+#        return Post.objects.filter(status=1).order_by('-post_date')
+#
+#
+#    def get_context_data(self, *args, **kwargs):
+#        context = super(Home, self).get_context_data(*args, **kwargs)
+#        cat_menu = Category.objects.all()
+#        context['cat_menu'] = cat_menu
+#        context['search'] = self.request.GET.get('search', '')
+#        return context
 class Home(ListView):
-    model = Post 
+    model = Post
     template_name = 'home.html'
-    ordering = ['-post_date']
     paginate_by = 4
 
     def get_queryset(self):
-        query = self.request.GET.get('search')
-        if query:
-            return Post.objects.filter(
-                Q(title__icontains=query) | 
-                Q(content__icontains=query) |
-                Q(author__username__icontains=query),status=1
-            ).distinct().order_by('-post_date')
-        return Post.objects.filter(status=1).order_by('-post_date')
-        
+        query = self.request.GET.get('search', '')
+        sort_by = self.request.GET.get('sort_by', 'date')  # Default sorting by date
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(Home, self).get_context_data(*args, **kwargs)
-        cat_menu = Category.objects.all()
-        context['cat_menu'] = cat_menu
+        queryset = Post.objects.filter(status=1)
+        
+        if query:
+            queryset = queryset.filter(
+                Q(title__icontains=query) |
+                Q(content__icontains=query) |
+                Q(author__username__icontains=query)
+            ).distinct()
+        
+        if sort_by == 'likes':
+            queryset = queryset.annotate(num_likes=Count('likes')).order_by('-num_likes', '-post_date')
+        else:  # Default sorting by date
+            queryset = queryset.order_by('-post_date')
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(Home, self).get_context_data(**kwargs)
+        context['cat_menu'] = Category.objects.all()
         context['search'] = self.request.GET.get('search', '')
+        context['sort_by'] = self.request.GET.get('sort_by', 'date')
         return context
 
 class Postdetail(DetailView):

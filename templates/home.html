@@ -6,11 +6,20 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
+    <div class="text-center mb-4">
         <!-- Full-width Heading -->
-        <div class="col-12 mb-4">
-            <h1 class="card-header bg-warning text-center">All Posts</h1>
-        </div>
+        <h1 class="card-header bg-warning mb-2">All Posts</h1>
+        
+        <!-- Sorting Options -->
+        <form method="get" action="{% url 'home' %}" class="d-inline-block">
+            <div class="form-group">
+                <select name="sort_by" class="form-select" onchange="this.form.submit()">
+                    <option value="date" {% if sort_by == 'date' %}selected{% endif %}>Sort by Date</option>
+                    <option value="likes" {% if sort_by == 'likes' %}selected{% endif %}>Sort by Likes</option>
+                </select>
+            </div>
+            <input type="hidden" name="search" value="{{ search }}">
+        </form>
     </div>
 
     {% for post in object_list %}
