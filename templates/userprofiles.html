@@ -16,6 +16,7 @@
     </div>
     {% endif %}
 
+    {% if user.is_authenticated and user.id == current_user.user.id %}
     <div class="card border-warning wide-card">
         <div class="card-header bg-warning text-center">
             <h1>{{ current_user.user.username }}</h1>
@@ -38,11 +39,9 @@
                                 <li class="list-inline-item">
                                     <strong>Date Joined:</strong> {{ current_user.user.date_joined }}
                                 </li>
-                                {% if user.is_authenticated and user.id == current_user.user.id %}
                                 <li class="list-inline-item">
-                                    <a href="{% url 'editprofile' current_user.id %}" class="btn btn-success btn-sm">Edit Profile</a>
+                                    <a href="{% url 'editprofile' current_user.user.id %}" class="btn btn-success btn-sm">Edit Profile</a>
                                 </li>
-                                {% endif %}
                             </ul>
                             <hr>
                             <div class="post-content">
@@ -77,5 +76,10 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <div class="alert alert-danger" role="alert">
+        You are not authorized to view this profile.
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

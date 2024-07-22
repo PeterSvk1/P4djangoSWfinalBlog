@@ -2,6 +2,7 @@
 {% block head_title %}Edit Profile{% endblock head_title %}
 
 {% block content %}
+{% if user.is_authenticated and user.profile.id == profile.id %}
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10 col-sm-12">
@@ -20,4 +21,9 @@
         </div>
     </div>
 </div>
+{% else %}
+    <div class="alert alert-danger" role="alert">
+        You are not authorized to edit this profile.
+    </div>
+{% endif %}
 {% endblock %}
