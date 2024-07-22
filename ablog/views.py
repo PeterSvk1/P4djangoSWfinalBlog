@@ -58,7 +58,7 @@ class Home(ListView):
         if sort_by == 'likes':
             queryset = queryset.annotate(num_likes=Count('likes')).order_by('-num_likes', '-post_date')
         else:  # Default sorting by date
-            queryset = queryset.order_by('-post_date')
+            queryset = queryset.annotate(num_likes=Count('likes')).order_by('-post_date')
 
         return queryset
 
