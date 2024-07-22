@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
+import os
 
 class Home(ListView):
     model = Post 
@@ -213,6 +214,12 @@ def contact_view(request):
             message = f'Hi,\n\nThank you for reaching out. We have received your message and will get back to you soon.\n\nYour message:\n{message}'
             from_email = settings.DEFAULT_FROM_EMAIL
             send_mail(subject, message, from_email, [email], fail_silently=False)
+
+            # Send an email notification to the site admin
+            admin_subject = 'New Contact Form Submission'
+            admin_message = f'You have a new contact form submission from {email}.\n\nMessage:\n{message}'
+            admin_email = os.environ.get('EMAIL_HOST_USER')  # Replace with your email address
+            send_mail(admin_subject, admin_message, from_email, [admin_email], fail_silently=False)
 
             messages.success(request, 'Your message has been sent successfully!')
             return redirect('contact')

@@ -83,6 +83,7 @@ EMAIL_USE_SSL = False
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
+
 ROOT_URLCONF = 'starwars.urls'
 
 TEMPLATES = [
