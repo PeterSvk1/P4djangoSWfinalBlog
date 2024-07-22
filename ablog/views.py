@@ -131,13 +131,9 @@ class Viewaddcomment(CreateView):
         return reverse_lazy('details', kwargs={'pk': self.kwargs['pk']})
 
 def SectionView(request, cats):
-    #category_posts = Post.objects.filter(category = cats)
-    #return render(request,'categories.html', {'cats':cats.title(), 'category_posts':category_posts})
     category = get_object_or_404(Category, name__iexact=cats.strip())
     category_posts = Post.objects.filter(category=cats, status=1).order_by('-post_date')
     return render(request, 'categories.html', {'cats':cats.title(), 'category_posts': category_posts})
-
-
 
 def ViewAllcategories(request):
     cat_all = Category.objects.all()
@@ -158,20 +154,6 @@ def ViewLike(request, pk):
     return HttpResponseRedirect(reverse('details', args=[str(pk)]))
 
 @login_required
-def upvote_comment(request, comment_id):
-    comment = get_object_or_404(Comment, id=comment_id)
-    user = request.user
-
-    if comment.upvotes.filter(id=user.id).exists():
-        comment.upvotes.remove(user)
-        messages.success(request, 'You have removed your upvote from the comment.')
-    else:
-        comment.upvotes.add(user)
-        messages.success(request, 'You have upvoted the comment.')
-
-    return redirect('details', pk=comment.post.id)
-
-@login_required
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     post_id = comment.post.id
@@ -184,20 +166,6 @@ def delete_comment(request, comment_id):
         messages.error(request, 'You do not have permission to delete this comment.')
 
     return redirect('details', pk=post_id)
-
-@login_required
-def downvote_comment(request, comment_id):
-    comment = get_object_or_404(Comment, id=comment_id)
-    user = request.user
-
-    if comment.downvotes.filter(id=user.id).exists():
-        comment.downvotes.remove(user)
-        messages.success(request, 'You have removed your downvote from the comment.')
-    else:
-        comment.downvotes.add(user)
-        messages.success(request, 'You have downvoted the comment.')
-
-    return redirect('details', pk=comment.post.id)
 
 def contact_view(request):
     if request.method == 'POST':
@@ -253,3 +221,35 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         messages.success(self.request, 'Profile updated successfully!')
         return super().form_valid(form)
+
+@login_required
+def upvote_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    user = request.user
+
+    if comment.upvotes.filter(id=user.id).exists():
+        comment.upvotes.remove(user)
+        messages.success(request, 'You have removed your upvote from the comment.')
+    else:
+        if comment.downvotes.filter(id=user.id).exists():
+            comment.downvotes.remove(user)
+        comment.upvotes.add(user)
+        messages.success(request, 'You have upvoted the comment.')
+
+    return redirect('details', pk=comment.post.id)
+
+@login_required
+def downvote_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    user = request.user
+
+    if comment.downvotes.filter(id=user.id).exists():
+        comment.downvotes.remove(user)
+        messages.success(request, 'You have removed your downvote from the comment.')
+    else:
+        if comment.upvotes.filter(id=user.id).exists():
+            comment.upvotes.remove(user)
+        comment.downvotes.add(user)
+        messages.success(request, 'You have downvoted the comment.')
+
+    return redirect('details', pk=comment.post.id)
