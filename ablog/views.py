@@ -76,9 +76,9 @@ class NewPost(LoginRequiredMixin, CreateView):
         if form.is_valid():
             post= form.save(commit=False)
             post.author= get_object_or_404(User, id=self.request.user.id)
-            post.status = 0  # Set post status to 'Draft'
+            post.status = 1  # Set post status to 'Draft'
             post.save()
-            messages.success(self.request, 'Your post has been submitted and is awaiting approval by the admin.')
+            messages.success(self.request, 'Post is created')
             pk= post.id 
             return HttpResponseRedirect(reverse('details', args=[str(pk)]))
 
