@@ -14,6 +14,11 @@ default_image1= "https://res.cloudinary.com/dg5lyidc8/image/upload/v1721074029"
 default_image2= "/static/images/default.4feffe0b7f2d.png"
 default_image= default_image1 + default_image2
 
+avatar1= "https://res.cloudinary.com/dg5lyidc8/image/upload/v1721074031/"
+avatar2 = "static/images/starwars.fbb5c1f1c2af.png"
+avatar = avatar1 + avatar2
+
+
 class Post(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -68,7 +73,7 @@ class Comment(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
-    profile_picture = CloudinaryField('image', default=default_image)
+    profile_picture = CloudinaryField('image', default=avatar)
     bio = models.TextField(default='starwarsfan')
 
     def __str__(self):
