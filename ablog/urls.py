@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, Postdetail,NewPost,EditPost,DeletePost,Categorys,SectionView, ViewAllcategories, ViewLike,Viewaddcomment,about,upvote_comment,delete_comment,downvote_comment,contact_view,CreateProfilePageView
+from .views import Home, Postdetail,NewPost,EditPost,DeletePost,Categorys,SectionView, EditProfileView, ViewAllcategories,ShowUserProfile, ViewLike,Viewaddcomment,about,upvote_comment,delete_comment,downvote_comment,contact_view,CreateProfilePageView
 
 urlpatterns = [
     
@@ -19,6 +19,8 @@ urlpatterns = [
     path('comment/<int:comment_id>/downvote/', downvote_comment, name='downvote_comment'),
     path('contact/', contact_view, name='contact'),
     path('createprofile/', CreateProfilePageView.as_view(), name='createprofilepage'),
+    path('<int:pk>/profile/', ShowUserProfile.as_view(), name='userprofile'),
+    path('<int:pk>/editprofile/', EditProfileView.as_view(), name='editprofile'),
 
     
 ]

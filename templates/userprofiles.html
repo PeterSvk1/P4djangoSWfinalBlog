@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cloudinary %}
+{% block head_title %}User Profile{% endblock head_title %}
+
+{% block content %}
+<div class="container-fluid p-0 mt-4">
+    {% if messages %}
+    <div class="container mt-4">
+        {% for message in messages %}
+        <div id="alert-msg" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="card border-warning wide-card">
+        <div class="card-header bg-warning text-center">
+            <h1>{{ current_user.user.username }}</h1>
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card-img-top mb-3 text-center">
+                        {% cloudinary current_user.profile_image %}
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <strong>Bio:</strong> {{ current_user.bio }}
+                                </li>
+                                <li class="list-inline-item">
+                                    <strong>Location:</strong> {{ current_user.location }}
+                                </li>
+                                <li class="list-inline-item">
+                                    <strong>Date Joined:</strong> {{ current_user.user.date_joined }}
+                                </li>
+                                {% if user.is_authenticated and user.id == current_user.user.id %}
+                                <li class="list-inline-item">
+                                    <a href="{% url 'editprofile' current_user.id %}" class="btn btn-success btn-sm">Edit Profile</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                            <hr>
+                            <div class="post-content">
+                                <p>{{ current_user.description|safe }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mb-4 text-center text-md-left">
+                        <div class="col-12 col-md-4 mb-2 mb-md-0">
+                            <a href="{% url 'home' %}" class="btn btn-dark btn-block">Back to Home</a>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <h2 class="text-center">User Posts</h2>
+                    {% if not user_posts %}
+                        <p class="text-center">No posts yet.</p>
+                    {% else %}
+                        <ul class="list-group mb-4">
+                            {% for post in user_posts %}
+                            <li class="list-group-item">
+                                <a href="{% url 'details' post.pk %}"><strong>{{ post.title }}</strong></a> 
+                                <small>{{ post.post_date }}</small>
+                                <p>{{ post.content|truncatewords:20 }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

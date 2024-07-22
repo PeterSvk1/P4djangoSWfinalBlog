@@ -229,3 +229,29 @@ class CreateProfilePageView(CreateView):
     def form_valid(self,form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+class ShowUserProfile(DetailView):
+    model = Profile
+    template_name = 'userprofiles.html'
+    context_object_name = 'current_user'
+
+    def get_context_data(self, **kwargs):
+        context = super(ShowUserProfile, self).get_context_data(**kwargs)
+        current_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        user_posts = Post.objects.filter(author=current_user.user, status=1).order_by('-post_date')
+        context["current_user"] = current_user
+        context["user_posts"] = user_posts
+        return context
+
+class EditProfileView(LoginRequiredMixin, UpdateView):
+    model = Profile
+    form_class = ProfileForm
+    template_name = 'edituserprofile.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self):
+        return get_object_or_404(Profile, user=self.request.user)
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Profile updated successfully!')
+        return super().form_valid(form)
