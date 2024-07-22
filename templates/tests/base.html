@@ -26,55 +26,43 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
-                <!-- Dropdown for New Post and New Category -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="postsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Posts
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="postsDropdown">
-                        <li><a class="dropdown-item" href="{% url 'newpost' %}">New Post</a></li>
-                        <li><a class="dropdown-item" href="{% url 'category' %}">New Category</a></li>
-                    </ul>
+               
+                <li class="nav-item">
+                    <span class="nav-link text-white ms-2">User: {{ user.username }}</span>
                 </li>
-
-                <!-- Dropdown for Contact and About Me -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="contactAboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Info
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="contactAboutDropdown">
-                        <li><a class="dropdown-item" href="{% url 'contact' %}">Contact</a></li>
-                        <li><a class="dropdown-item" href="{% url 'about' %}">About Me</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'contact' %}">Contact</a>
                 </li>
-
-                <!-- Dropdown for Create Profile, Edit Profile, and User Profile -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        User: {{ user.username }}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="{% url 'createprofilepage' %}">Create Profile</a></li>
-                        <li><a class="dropdown-item" href="{% url 'editprofile' user.profile.id %}">Edit Profile</a></li>
-                        <li><a class="dropdown-item" href="{% url 'userprofile' user.profile.id %}">User Profile</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'newpost' %}">New Post</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'category' %}">New Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'about' %}">About Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'createprofilepage' %}">Create Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'userprofile' user.profile.id %}" class="btn btn-success btn-sm">User Profile</a>
+                </li>
+                <li>
+                    <a href="{% url 'editprofile' user.profile.id %}" class="btn btn-success btn-sm">Edit Profile</a>
+                </li>
                 {% if cat_menu %}
-                <!-- Dropdown for Blog Categories -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Blog
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="blogDropdown">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% for item in cat_menu %}
                         <li><a class="dropdown-item" href="{% url 'category' item|slugify %}">{{ item }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>
                 {% endif %}
-
-                <!-- Logout and Search -->
                 <li class="nav-item">
                     <a class="nav-link text-white {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}">Logout</a>
                 </li>
@@ -128,21 +116,28 @@
     <ul class="pagination">
         {% if is_paginated %}
             {% if page_obj.has_previous %}
-                <li class="page-item ms-2">
+
+                <li class="page-item  ms-2">
                     <a class="page-link bg-warning text-dark" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                 </li>
             {% endif %}
-            <li class="page-item active ms-2">
+            <li class="page-item active  ms-2">
                 <a class="page-link bg-warning text-dark" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
             </li>
             {% if page_obj.has_next %}
                 <li class="page-item ms-2"> 
                     <a class="page-link bg-warning text-dark" href="?page={{ page_obj.next_page_number }}">Next</a>
                 </li>
+
             {% endif %}
         {% endif %}
     </ul>
 </div>
+
+
+
+
+
 
 <!-- Footer -->
 <footer class="footer bg-yellow text-dark py-4">
