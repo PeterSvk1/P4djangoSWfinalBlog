@@ -11,13 +11,14 @@ choice_list = []
 for item in choices:
     choice_list.append(item)
 
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields= ('title','featured_image','category','content','excerpt')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Title please'}),
+            'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'tltle'}),
             'featured_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'category': forms.Select(choices=choice_list,attrs={'class':'form-control'}),
             'content': SummernoteWidget(attrs={'class': 'summernote'}),

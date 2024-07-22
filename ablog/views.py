@@ -130,8 +130,13 @@ class Viewaddcomment(CreateView):
         return reverse_lazy('details', kwargs={'pk': self.kwargs['pk']})
 
 def SectionView(request, cats):
-    category_posts = Post.objects.filter(category = cats)
-    return render(request,'categories.html', {'cats':cats.title(), 'category_posts':category_posts})
+    #category_posts = Post.objects.filter(category = cats)
+    #return render(request,'categories.html', {'cats':cats.title(), 'category_posts':category_posts})
+    category = get_object_or_404(Category, name__iexact=cats.strip())
+    category_posts = Post.objects.filter(category=cats, status=1).order_by('-post_date')
+    return render(request, 'categories.html', {'cats':cats.title(), 'category_posts': category_posts})
+
+
 
 def ViewAllcategories(request):
     cat_all = Category.objects.all()
