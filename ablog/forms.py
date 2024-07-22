@@ -55,9 +55,9 @@ class ContactForm(forms.Form):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('profile_picture','bio')
+        fields = ('bio',)
         widgets = {
-             'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+           #  'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
               'bio': forms.Textarea(attrs={'class':'form-control',}),
            
 

@@ -28,7 +28,7 @@ class Home(ListView):
                 Q(author__username__icontains=query),status=1
             ).distinct().order_by('-post_date')
         return Post.objects.filter(status=1).order_by('-post_date')
-        #return Post.objects.all().order_by('-post_date')
+        
 
     def get_context_data(self, *args, **kwargs):
         context = super(Home, self).get_context_data(*args, **kwargs)
@@ -219,16 +219,6 @@ def contact_view(request):
         form = ContactForm()
     
     return render(request, 'contact.html', {'form': form})
-
-class CreateProfilePageView(CreateView):
-    model = Profile
-    form_class = ProfileForm
-    template_name = 'createprofile.html'
-    #fields= '__all__'
-
-    def form_valid(self,form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
 
 class ShowUserProfile(DetailView):
     model = Profile
