@@ -43,9 +43,14 @@
                     <a class="nav-link text-white" href="{% url 'about' %}">About Me</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{% url 'createprofilepage' %}">Profile</a>
+                    <a class="nav-link text-white" href="{% url 'createprofilepage' %}">Create Profile</a>
                 </li>
-                
+                <li class="nav-item">
+                    <a href="{% url 'userprofile' user.profile.id %}" class="btn btn-success btn-sm">User Profile</a>
+                </li>
+                <li>
+                    <a href="{% url 'editprofile' user.profile.id %}" class="btn btn-success btn-sm">Edit Profile</a>
+                </li>
                 {% if cat_menu %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
