@@ -175,7 +175,8 @@ def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     post_id = comment.post.id
 
-    if request.user == comment.name or request.user.is_superuser:
+    # Ensure correct permission check
+    if request.user.username == comment.name or request.user.is_superuser:
         comment.delete()
         messages.success(request, 'Comment deleted successfully!')
     else:
