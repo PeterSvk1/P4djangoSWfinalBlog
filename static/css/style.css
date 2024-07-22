@@ -222,6 +222,11 @@ main#content {
 .input-wrapper:focus-within {
     border-color: #ffc107;
 }
+.non-clickable {
+    pointer-events: none; /* Prevents any mouse interactions */
+    opacity: 1; /* Optional: makes the button look disabled */
+}
+
 img{
     max-width: 100%;
 }
