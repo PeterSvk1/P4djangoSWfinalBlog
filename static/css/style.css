@@ -209,6 +209,20 @@ main#content {
     box-shadow: 0 4px 8px rgba(220, 53, 69, 0.5); /* Red shadow */
 }
 
+.input-wrapper {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 300px; /* Adjust the max width as needed */
+    transition: border-color 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+    border-color: #ffc107;
+}
+
 /* Mobile Styles */
 @media (max-width: 576px) {
     .form-group {
