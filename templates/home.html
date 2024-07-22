@@ -6,7 +6,13 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="card-header bg-warning text-center">All Posts</h1>
+    <div class="row">
+        <!-- Full-width Heading -->
+        <div class="col-12 mb-4">
+            <h1 class="card-header bg-warning text-center">All Posts</h1>
+        </div>
+    </div>
+
     {% for post in object_list %}
     <div class="card mb-4 blog-card">
         <div class="card-body">

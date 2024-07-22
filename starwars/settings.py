@@ -104,6 +104,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'starwars.wsgi.application'
+SUMMERNOTE_THEME = 'bs3'
 
 SUMMERNOTE_CONFIG = {
     # You can put custom Summernote settings
