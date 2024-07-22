@@ -3,10 +3,11 @@
 {% block content %}
 
     {% if user.is_authenticated %}
-    <h1 class="card-header bg-warning text-center">Add Category</h1>
+   
 
     
     <div class="card mb-4">
+         <h1 class="card-header bg-warning text-center">Add Category</h1>
         <div class="card-body">
             <form method="POST">
                 {% csrf_token %}

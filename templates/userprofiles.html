@@ -24,39 +24,36 @@
         <div class="card-body">
             <div class="row justify-content-center">
                 <div class="col-12">
+                    <!-- Profile Image -->
                     <div class="card-img-top mb-3 text-center">
                         {% cloudinary current_user.profile_image %}
                     </div>
+                    <!-- User Details -->
                     <div class="card mb-4">
                         <div class="card-body">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <strong>Bio:</strong> {{ current_user.bio }}
-                                </li>
-                                <li class="list-inline-item">
-                                    <strong>Location:</strong> {{ current_user.location }}
-                                </li>
-                                <li class="list-inline-item">
+                            <ul class="list-unstyled">
+                                <li>
                                     <strong>Date Joined:</strong> {{ current_user.user.date_joined }}
                                 </li>
-                                <li class="list-inline-item">
+                                <li class="mt-2">
                                     <a href="{% url 'editprofile' current_user.user.id %}" class="btn btn-success btn-sm">Edit Profile</a>
                                 </li>
+                                <!-- Bio Section -->
+                                <li class="mt-3">
+                                    <strong>Bio:</strong>
+                                    <p>{{ current_user.bio }}</p>
+                                </li>
                             </ul>
-                            <hr>
                             <div class="post-content">
                                 <p>{{ current_user.description|safe }}</p>
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <div class="row mb-4 text-center text-md-left">
-                        <div class="col-12 col-md-4 mb-2 mb-md-0">
+                    <div class="row mb-4 text-center">
+                        <div class="col-12">
                             <a href="{% url 'home' %}" class="btn btn-dark btn-block">Back to Home</a>
                         </div>
                     </div>
-                    <hr>
-
                     <h2 class="text-center">User Posts</h2>
                     {% if not user_posts %}
                         <p class="text-center">No posts yet.</p>
