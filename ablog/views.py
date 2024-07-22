@@ -67,6 +67,7 @@ class Home(ListView):
         context['cat_menu'] = Category.objects.all()
         context['search'] = self.request.GET.get('search', '')
         context['sort_by'] = self.request.GET.get('sort_by', 'date')
+        context['total_posts'] = Post.objects.filter(status=1).count()
         return context
 
 class Postdetail(DetailView):
