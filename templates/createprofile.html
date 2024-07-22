@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block head_title %}Create Profile{% endblock head_title %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <div class="card mb-4">
+            <h1 class="card-header bg-warning text-center">Create Profile</h1>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }}
+                    <div class="form-group">
+                        <a href="{% url 'home' %}" class="btn btn-dark">Back</a>
+                        <button type="submit" class="btn btn-primary">Create Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning">
+            <p>You must be logged in to create profile. <a href="{% url 'account_login' %}">Login here</a>.</p>
+  
+    {% endif %}
+</div>
+{% endblock %}

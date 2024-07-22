@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView,DeleteView
 from .models import Post, Category, Comment, Profile, ContactMessage
-from .forms import PostForm,EditForm,CommentForm,ContactForm
+from .forms import PostForm,EditForm,CommentForm,ContactForm, ProfileForm
 from django.urls import reverse_lazy,reverse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -219,3 +219,13 @@ def contact_view(request):
         form = ContactForm()
     
     return render(request, 'contact.html', {'form': form})
+
+class CreateProfilePageView(CreateView):
+    model = Profile
+    form_class = ProfileForm
+    template_name = 'createprofile.html'
+    #fields= '__all__'
+
+    def form_valid(self,form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)

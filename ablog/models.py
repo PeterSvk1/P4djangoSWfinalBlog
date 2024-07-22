@@ -65,11 +65,15 @@ class Comment(models.Model):
         return self.downvotes.count()
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     profile_picture = CloudinaryField('image', default=default_image)
+    bio = models.TextField(default='starwarsfan')
 
     def __str__(self):
         return f'{self.user.username} Profile'
+    
+    def get_absolute_url(self):
+        return reverse('home')
 
 class ContactMessage(models.Model):
     email = models.EmailField()

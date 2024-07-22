@@ -1,6 +1,6 @@
 from django import forms
 from django_summernote.widgets import SummernoteWidget
-from .models import Post,Category,Comment
+from .models import Post, Category, Comment, Profile
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 
@@ -51,3 +51,14 @@ class CommentForm(forms.ModelForm):
 class ContactForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Your email address'}))
     message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Your message'}))
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('profile_picture','bio')
+        widgets = {
+             'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+              'bio': forms.Textarea(attrs={'class':'form-control',}),
+           
+
+        }
