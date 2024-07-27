@@ -15,7 +15,7 @@ __pycache__/
 db.sqlite3
 
 # Static files
-staticfiles/
+# staticfiles/
 
 # IDE specific files
 .vscode/
