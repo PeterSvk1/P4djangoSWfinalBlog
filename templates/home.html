@@ -33,7 +33,7 @@
             <div class="card-img-top mb-3">
                 {% cloudinary post.featured_image format="jpg" quality="auto" width="300" height="200" crop="fill" alt="Picture of {{ post.title }}" %}
             </div>
-            <h5 class="card-title">{{ post.title|safe }}</h5>
+            <h5 class="card-title text-center">{{ post.title|safe }}</h5>
             <div>
             <p class="card-author" style="background-color: #f0f0f0; padding: 5px;"><strong>By {{ post.author }}</strong></p>
             </div>
