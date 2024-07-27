@@ -17,9 +17,9 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'featured_image', 'category', 'content', 'excerpt')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'tltle'}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'tltle'}),
             'featured_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(choices=choice_list,attrs={'class':'form-control'}),
+            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'content': SummernoteWidget(attrs={'class': 'summernote'}),
             'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
         }
@@ -28,12 +28,12 @@ class PostForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','featured_image','category','content','excerpt')
+        fields = ('title', 'featured_image', 'category', 'content', 'excerpt')
 
-        widgets ={
-            'title': forms.TextInput(attrs={'class':'form-control',}),
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control', }),
             'featured_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(choices=choice_list,attrs={'class':'form-control'}),
+            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'content': SummernoteWidget(attrs={'class': 'summernote'}),
             'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
         }
@@ -44,8 +44,8 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('content',)
 
-        widgets ={
-            'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Please write something nice'}),
+        widgets = {
+            'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Please write something nice'}),
             }
 
 
