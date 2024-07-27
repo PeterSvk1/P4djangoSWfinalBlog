@@ -34,9 +34,11 @@ class Home(ListView):
             ).distinct()
 
         if sort_by == 'likes':
-            queryset = queryset.annotate(num_likes=Count('likes')).order_by('-num_likes', '-post_date')
+            queryset = queryset.annotate(
+                num_likes=Count('likes')).order_by('-num_likes', '-post_date')
         else:
-            queryset = queryset.annotate(num_likes=Count('likes')).order_by('-post_date')
+            queryset = queryset.annotate(
+                num_likes=Count('likes')).order_by('-post_date')
 
         return queryset
 
@@ -66,7 +68,8 @@ class Postdetail(DetailView):
         if self.request.user.is_authenticated:
             liked = post.likes.filter(id=self.request.user.id).exists()
             upvoted_comments = post.comments.filter(upvotes=self.request.user)
-            downvoted_comments = post.comments.filter(downvotes=self.request.user)
+            downvoted_comments = post.comments.filter(
+                downvotes=self.request.user)
         else:
             upvoted_comments = []
             downvoted_comments = []
@@ -149,8 +152,11 @@ class Viewaddcomment(CreateView):
 
 def SectionView(request, cats):
     category = get_object_or_404(Category, name__iexact=cats.strip())
-    category_posts = Post.objects.filter(category=cats, status=1).order_by('-post_date')
-    return render(request, 'categories.html', {'cats': cats.title(), 'category_posts': category_posts})
+    category_posts = Post.objects.filter(
+        category=cats, status=1).order_by('-post_date')
+    return render(
+        request, 'categories.html',
+        {'cats': cats.title(), 'category_posts': category_posts})
 
 
 def ViewAllcategories(request):
@@ -202,13 +208,16 @@ def contact_view(request):
             subject = 'Thank you for contacting us!'
             message = f'Hi,\n\nThank you for EMAIL.\n\nMessage\n{message}'
             from_email = settings.DEFAULT_FROM_EMAIL
-            send_mail(subject, message, from_email, [email], fail_silently=False)
+            send_mail(
+                subject, message, from_email, [email], fail_silently=False)
 
             # Send an email notification to the site admin
             admin_subject = 'New Contact Form Submission'
             admin_message = f'New email from {email}.\n\nMessage:\n{message}'
             admin_email = os.environ.get('EMAIL_HOST_USER')
-            send_mail(admin_subject, admin_message, from_email, [admin_email], fail_silently=False)
+            send_mail(
+                admin_subject, admin_message, from_email,
+                [admin_email], fail_silently=False)
 
             messages.success(request, 'Message was sent!')
             return redirect('contact')
@@ -226,7 +235,8 @@ class ShowUserProfile(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ShowUserProfile, self).get_context_data(**kwargs)
         current_user = get_object_or_404(Profile, id=self.kwargs['pk'])
-        user_posts = Post.objects.filter(author=current_user.user, status=1).order_by('-post_date')
+        user_posts = Post.objects.filter(
+            author=current_user.user, status=1).order_by('-post_date')
         context["current_user"] = current_user
         context["user_posts"] = user_posts
         return context
