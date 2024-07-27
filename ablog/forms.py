@@ -36,9 +36,10 @@ class EditForm(forms.ModelForm):
         fields = ('title', 'featured_image', 'category', 'content', 'excerpt')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', }),
-            'featured_image': forms.ClearableFileInput
-            (attrs={'class': 'form-control'}),
+            'title': forms.TextInput(
+                attrs={'class': 'form-control', }),
+            'featured_image': forms.ClearableFileInput(
+                attrs={'class': 'form-control'}),
             'category': forms.Select(
                 choices=choice_list, attrs={'class': 'form-control'}),
             'content': SummernoteWidget(

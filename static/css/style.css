@@ -10,7 +10,6 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #f8f9fa;
-    font-family: Arial, sans-serif;
     overflow-x: hidden; 
 }
 
@@ -32,7 +31,6 @@ main#content {
     margin: 0 auto; 
     padding: 0; 
     max-width: 100%; 
-   
 }
 
 /* Card styling */
@@ -117,7 +115,6 @@ main#content {
     line-height: 1.5;
     border-radius: 0.25rem;
 }
-
 
 .btn-success:hover {
     background-color: #d7e237;
@@ -216,7 +213,7 @@ img{
 }
 
 /* Mobile Styles */
-@media (max-width: 576px) {
+@media (max-width: 1000px) {
     .form-group {
         padding: 10px;
         margin: 0 auto;
@@ -256,7 +253,26 @@ img{
 
     .btn {
         width: 100%; /* Make buttons full-width on smaller screens */
-      /*  margin-bottom: 0.5rem;  Add margin for spacing */
         margin: auto;
+    }
+    
+    .social-icons ul {
+        flex-direction: column; /* Stack social links vertically on smaller screens */
+    }
+    
+    .social-icons li {
+        margin-bottom: 10px; /* Add space between social links */
+    }
+    
+    .social-icons li:last-child {
+        margin-bottom: 0; /* Remove bottom margin for the last item */
+    }
+    
+    .col-12.col-md-4.text-center.mb-3.mb-md-0 p {
+        margin-bottom: 1rem; /* Add bottom margin for spacing */
+    }
+    
+    .col-12.col-md-4.text-center p {
+        margin-bottom: 1rem; /* Add bottom margin for spacing */
     }
 }
