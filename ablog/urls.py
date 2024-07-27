@@ -15,14 +15,21 @@ urlpatterns = [
     path('allcategory/', ViewAllcategories, name='allcategories'),
     path('like/<int:pk>', ViewLike, name='likeposts'),
     path('posts/<int:pk>/comment/', Viewaddcomment.as_view(), name='comments'),
-    path('about',about,name='about'),
-    path('comment/<int:comment_id>/upvote/', upvote_comment,
-    name='upvote_comment'),
-    path('comment/<int:comment_id>/delete/', delete_comment,
-    name='delete_comment'),
-    path('comment/<int:comment_id>/downvote/', downvote_comment,
-    name='downvote_comment'),
+    path('about', about, name='about'),
+    path(
+        'comment/<int:comment_id>/upvote/',
+        upvote_comment, name='upvote_comment'
+        ),
+    path(
+        'comment/<int:comment_id>/delete/',
+        delete_comment, name='delete_comment'),
+    path(
+        'comment/<int:comment_id>/downvote/',
+        downvote_comment, name='downvote_comment'),
     path('contact/', contact_view, name='contact'),
     path('<int:pk>/profile/', ShowUserProfile.as_view(), name='userprofile'),
-    path('<int:pk>/editprofile/', EditProfileView.as_view(), name='editprofile'),
+    path(
+        '<int:pk>/editprofile/', EditProfileView.as_view(),
+        name='editprofile'
+        ),
 ]

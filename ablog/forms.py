@@ -21,7 +21,7 @@ class PostForm(forms.ModelForm):
             'featured_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'content': SummernoteWidget(attrs={'class': 'summernote'}),
-            'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
+            'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Text'}),
         }
 
 
@@ -35,7 +35,7 @@ class EditForm(forms.ModelForm):
             'featured_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
             'content': SummernoteWidget(attrs={'class': 'summernote'}),
-            'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
+            'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'text'}),
         }
 
 
@@ -45,13 +45,13 @@ class CommentForm(forms.ModelForm):
         fields = ('content',)
 
         widgets = {
-            'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Please write something nice'}),
+            'content': forms.Textarea(attrs={'class': 'form-control', }),
             }
 
 
 class ContactForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Your email address'}))
-    message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Your message'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', }))
+    message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', }))
 
 
 class ProfileForm(forms.ModelForm):
