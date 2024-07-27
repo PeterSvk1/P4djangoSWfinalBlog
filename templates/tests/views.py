@@ -1,9 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from django.views.generic import DeleteView
+from django.shortcuts import render, get_object_or_404,redirect
+from django.views.generic import ListView, DetailView, CreateView, UpdateView,DeleteView
 from .models import Post, Category, Comment, Profile, ContactMessage
-from .forms import PostForm, EditForm, CommentForm, ContactForm, ProfileForm
-from django.urls import reverse_lazy, reverse
+from .forms import PostForm,EditForm,CommentForm,ContactForm, ProfileForm
+from django.urls import reverse_lazy,reverse
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
@@ -15,7 +14,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 import os
 
-
 class Home(ListView):
     model = Post
     template_name = 'home.html'
@@ -25,17 +23,17 @@ class Home(ListView):
         query = self.request.GET.get('search', '')
         sort_by = self.request.GET.get('sort_by', 'date')
         queryset = Post.objects.filter(status=1)
-
+        
         if query:
             queryset = queryset.filter(
                 Q(title__icontains=query) |
                 Q(content__icontains=query) |
                 Q(author__username__icontains=query)
             ).distinct()
-
+        
         if sort_by == 'likes':
             queryset = queryset.annotate(num_likes=Count('likes')).order_by('-num_likes', '-post_date')
-        else:
+        else: 
             queryset = queryset.annotate(num_likes=Count('likes')).order_by('-post_date')
 
         return queryset
@@ -50,10 +48,9 @@ class Home(ListView):
         context['no_results'] = not self.get_queryset().exists() and query
         return context
 
-
 class Postdetail(DetailView):
     model = Post
-    template_name = 'details.html'
+    template_name= 'details.html'
 
     def get_context_data(self, *args, **kwargs):
         context = super(Postdetail, self).get_context_data(*args, **kwargs)
@@ -81,25 +78,23 @@ class Postdetail(DetailView):
 
         return context
 
-
 class NewPost(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = 'newpost.html'
-
+    
     def form_valid(self, form):
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = get_object_or_404(User, id=self.request.user.id)
-            post.status = 1  # draft or published
+            post= form.save(commit=False)
+            post.author= get_object_or_404(User, id=self.request.user.id)
+            post.status = 1 #draft or published
             post.save()
             messages.success(self.request, 'Post is created')
-            pk = post.id
+            pk= post.id 
             return HttpResponseRedirect(reverse('details', args=[str(pk)]))
 
-
 class EditPost(UpdateView):
-    model = Post
+    model= Post
     form_class = EditForm
     template_name = 'editpost.html'
 
@@ -107,11 +102,9 @@ class EditPost(UpdateView):
         messages.success(self.request, 'Post updated successfully!')
         return super().form_valid(form)
 
-
 def about(request):
     return render(request, 'about.html')
-
-
+   
 class DeletePost(DeleteView):
     model = Post
     template_name = 'deletepost.html'
@@ -120,44 +113,42 @@ class DeletePost(DeleteView):
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author or self.request.user.is_superuser
-
+        
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, 'Post deleted successfully!')
         return super().delete(request, *args, **kwargs)
 
-
 class Categorys(CreateView):
     model = Category
+    
     template_name = 'category.html'
     fields = '__all__'
 
-
 class Viewaddcomment(CreateView):
+
     model = Comment
-    form_class = CommentForm
+    form_class= CommentForm
     template_name = 'addcomment.html'
 
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
-        form.instance.name = self.request.user.username
+ 
+        form.instance.name = self.request.user.username 
         messages.success(self.request, 'Comment added!')
         return super().form_valid(form)
 
     def get_success_url(self):
         return reverse_lazy('details', kwargs={'pk': self.kwargs['pk']})
 
-
 def SectionView(request, cats):
     category = get_object_or_404(Category, name__iexact=cats.strip())
     category_posts = Post.objects.filter(category=cats, status=1).order_by('-post_date')
     return render(request, 'categories.html', {'cats':cats.title(), 'category_posts': category_posts})
 
-
 def ViewAllcategories(request):
     cat_all = Category.objects.all()
     return render(request,'allcategories.html', {'cat_all':cat_all})
-
-
+    
 @login_required
 def ViewLike(request, pk):
     post = get_object_or_404(Post, id=request.POST.get('postid'))
@@ -172,7 +163,6 @@ def ViewLike(request, pk):
 
     return HttpResponseRedirect(reverse('details', args=[str(pk)]))
 
-
 @login_required
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
@@ -186,7 +176,6 @@ def delete_comment(request, comment_id):
         messages.error(request, 'You do not have permission to delete this comment.')
 
     return redirect('details', pk=post_id)
-
 
 def contact_view(request):
     if request.method == 'POST':
@@ -214,9 +203,8 @@ def contact_view(request):
             return redirect('contact')
     else:
         form = ContactForm()
-
+    
     return render(request, 'contact.html', {'form': form})
-
 
 class ShowUserProfile(DetailView):
     model = Profile
@@ -231,7 +219,6 @@ class ShowUserProfile(DetailView):
         context["user_posts"] = user_posts
         return context
 
-
 class EditProfileView(LoginRequiredMixin, UpdateView):
     model = Profile
     form_class = ProfileForm
@@ -244,7 +231,6 @@ class EditProfileView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         messages.success(self.request, 'Profile updated successfully!')
         return super().form_valid(form)
-
 
 @login_required
 def upvote_comment(request, comment_id):
@@ -261,7 +247,6 @@ def upvote_comment(request, comment_id):
         messages.success(request, 'You have upvoted the comment.')
 
     return redirect('details', pk=comment.post.id)
-
 
 @login_required
 def downvote_comment(request, comment_id):
