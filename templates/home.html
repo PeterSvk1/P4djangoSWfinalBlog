@@ -20,6 +20,11 @@
             <input type="hidden" name="search" value="{{ search }}">
         </form>
     </div>
+    {% if no_results %}
+    <div class="alert alert-warning" role="alert">
+        Nothing found for "{{ search }}". Please try to search something else.
+    </div>
+{% endif %}
 
     {% for post in object_list %}
     <div class="card mb-4 blog-card">

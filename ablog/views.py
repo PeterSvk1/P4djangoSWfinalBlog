@@ -14,29 +14,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 import os
 
-#class Home(ListView):
-#    model = Post 
-#    template_name = 'home.html'
-#    ordering = ['-post_date']
-#    paginate_by = 4
-#
-#    def get_queryset(self):
-#        query = self.request.GET.get('search')
-#        if query:
-#            return Post.objects.filter(
-#                Q(title__icontains=query) | 
-#                Q(content__icontains=query) |
-#                Q(author__username__icontains=query),status=1
-#            ).distinct().order_by('-post_date')
-#        return Post.objects.filter(status=1).order_by('-post_date')
-#
-#
-#    def get_context_data(self, *args, **kwargs):
-#        context = super(Home, self).get_context_data(*args, **kwargs)
-#        cat_menu = Category.objects.all()
-#        context['cat_menu'] = cat_menu
-#        context['search'] = self.request.GET.get('search', '')
-#        return context
 class Home(ListView):
     model = Post
     template_name = 'home.html'
@@ -44,8 +21,7 @@ class Home(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('search', '')
-        sort_by = self.request.GET.get('sort_by', 'date')  # Default sorting by date
-
+        sort_by = self.request.GET.get('sort_by', 'date')
         queryset = Post.objects.filter(status=1)
         
         if query:
@@ -57,17 +33,19 @@ class Home(ListView):
         
         if sort_by == 'likes':
             queryset = queryset.annotate(num_likes=Count('likes')).order_by('-num_likes', '-post_date')
-        else:  # Default sorting by date
+        else: 
             queryset = queryset.annotate(num_likes=Count('likes')).order_by('-post_date')
 
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super(Home, self).get_context_data(**kwargs)
+        query = self.request.GET.get('search', '')
         context['cat_menu'] = Category.objects.all()
-        context['search'] = self.request.GET.get('search', '')
+        context['search'] = query
         context['sort_by'] = self.request.GET.get('sort_by', 'date')
         context['total_posts'] = Post.objects.filter(status=1).count()
+        context['no_results'] = not self.get_queryset().exists() and query
         return context
 
 class Postdetail(DetailView):
@@ -109,7 +87,7 @@ class NewPost(LoginRequiredMixin, CreateView):
         if form.is_valid():
             post= form.save(commit=False)
             post.author= get_object_or_404(User, id=self.request.user.id)
-            post.status = 1  # Set post status to 'Draft'
+            post.status = 1 #draft or published
             post.save()
             messages.success(self.request, 'Post is created')
             pk= post.id 
