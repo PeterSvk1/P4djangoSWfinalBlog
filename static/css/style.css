@@ -92,7 +92,6 @@ main#content {
 
 /* Style the buttons */
 .btn-primary {
-    background-color: #007bff;
     border-color: #007bff;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -100,8 +99,8 @@ main#content {
 }
 
 .btn-primary:hover {
-    background-color: #0069d9;
-    border-color: #0062cc;
+    background-color: #22d25d;
+    border-color: #b10b19;
 }
 
 .card-img-top img {
@@ -119,23 +118,14 @@ main#content {
     border-radius: 0.25rem;
 }
 
-.btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
-}
 
 .btn-success:hover {
-    background-color: #218838;
+    background-color: #d7e237;
     border-color: #1e7e34;
 }
 
-.btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
-}
-
 .btn-danger:hover {
-    background-color: #c82333;
+    background-color: #200205;
     border-color: #bd2130;
 }
 
