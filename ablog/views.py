@@ -183,7 +183,7 @@ def delete_comment(request, comment_id):
         comment.delete()
         messages.success(request, 'Comment deleted successfully!')
     else:
-        messages.error(request, 'You do not have permission to delete this comment.')
+        messages.error(request, 'Sorry not allowed.')
 
     return redirect('details', pk=post_id)
 
@@ -200,17 +200,17 @@ def contact_view(request):
 
             # Send a confirmation email
             subject = 'Thank you for contacting us!'
-            message = f'Hi,\n\nThank you for reaching out. We have received your message and will get back to you soon.\n\nYour message:\n{message}'
+            message = f'Hi,\n\nThank you for EMAIL.\n\nMessage\n{message}'
             from_email = settings.DEFAULT_FROM_EMAIL
             send_mail(subject, message, from_email, [email], fail_silently=False)
 
             # Send an email notification to the site admin
             admin_subject = 'New Contact Form Submission'
-            admin_message = f'You have a new contact form submission from {email}.\n\nMessage:\n{message}'
-            admin_email = os.environ.get('EMAIL_HOST_USER')  # Replace with your email address
+            admin_message = f'New email from {email}.\n\nMessage:\n{message}'
+            admin_email = os.environ.get('EMAIL_HOST_USER')
             send_mail(admin_subject, admin_message, from_email, [admin_email], fail_silently=False)
 
-            messages.success(request, 'Your message has been sent successfully!')
+            messages.success(request, 'Message was sent!')
             return redirect('contact')
     else:
         form = ContactForm()
@@ -253,7 +253,7 @@ def upvote_comment(request, comment_id):
 
     if comment.upvotes.filter(id=user.id).exists():
         comment.upvotes.remove(user)
-        messages.success(request, 'You have removed your upvote from the comment.')
+        messages.success(request, 'You have removed your upvote.')
     else:
         if comment.downvotes.filter(id=user.id).exists():
             comment.downvotes.remove(user)
@@ -270,7 +270,7 @@ def downvote_comment(request, comment_id):
 
     if comment.downvotes.filter(id=user.id).exists():
         comment.downvotes.remove(user)
-        messages.success(request, 'You have removed your downvote from the comment.')
+        messages.success(request, 'You have removed your downvote.')
     else:
         if comment.upvotes.filter(id=user.id).exists():
             comment.upvotes.remove(user)

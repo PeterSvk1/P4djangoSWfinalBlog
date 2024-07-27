@@ -5,8 +5,7 @@ from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 
 
-
-choices = Category.objects.all().values_list('name','name')
+choices = Category.objects.all().values_list('name', 'name')
 choice_list = []
 for item in choices:
     choice_list.append(item)
@@ -15,7 +14,7 @@ for item in choices:
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields= ('title','featured_image','category','content','excerpt')
+        fields = ('title', 'featured_image', 'category', 'content', 'excerpt')
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'tltle'}),
@@ -23,8 +22,8 @@ class PostForm(forms.ModelForm):
             'category': forms.Select(choices=choice_list,attrs={'class':'form-control'}),
             'content': SummernoteWidget(attrs={'class': 'summernote'}),
             'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
-
         }
+
 
 class EditForm(forms.ModelForm):
     class Meta:
@@ -39,6 +38,7 @@ class EditForm(forms.ModelForm):
             'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Something short to describe your blog'}),
         }
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -48,17 +48,16 @@ class CommentForm(forms.ModelForm):
             'content': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Please write something nice'}),
             }
 
+
 class ContactForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Your email address'}))
     message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Your message'}))
+
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('bio',)
         widgets = {
-           #  'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-              'bio': forms.Textarea(attrs={'class':'form-control',}),
-           
-
+            'bio': forms.Textarea(attrs={'class': 'form-control', }),
         }
