@@ -150,12 +150,12 @@ class Viewaddcomment(CreateView):
 def SectionView(request, cats):
     category = get_object_or_404(Category, name__iexact=cats.strip())
     category_posts = Post.objects.filter(category=cats, status=1).order_by('-post_date')
-    return render(request, 'categories.html', {'cats':cats.title(), 'category_posts': category_posts})
+    return render(request, 'categories.html', {'cats': cats.title(), 'category_posts': category_posts})
 
 
 def ViewAllcategories(request):
     cat_all = Category.objects.all()
-    return render(request,'allcategories.html', {'cat_all':cat_all})
+    return render(request, 'allcategories.html', {'cat_all': cat_all})
 
 
 @login_required

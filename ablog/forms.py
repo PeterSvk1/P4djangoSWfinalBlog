@@ -17,11 +17,16 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'featured_image', 'category', 'content', 'excerpt')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'tltle'}),
-            'featured_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
-            'content': SummernoteWidget(attrs={'class': 'summernote'}),
-            'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'Text'}),
+            'title': forms.TextInput(
+                attrs={'class': 'form-control', 'placeholder': 'tltle'}),
+            'featured_image': forms.ClearableFileInput(
+                attrs={'class': 'form-control'}),
+            'category': forms.Select(
+                choices=choice_list, attrs={'class': 'form-control'}),
+            'content': SummernoteWidget(
+                attrs={'class': 'summernote'}),
+            'excerpt': SummernoteWidget(
+                attrs={'class': 'summernote', 'placeholder': 'Text'}),
         }
 
 
@@ -32,10 +37,14 @@ class EditForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', }),
-            'featured_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'category': forms.Select(choices=choice_list, attrs={'class': 'form-control'}),
-            'content': SummernoteWidget(attrs={'class': 'summernote'}),
-            'excerpt': SummernoteWidget(attrs={'class': 'summernote', 'placeholder': 'text'}),
+            'featured_image': forms.ClearableFileInput
+            (attrs={'class': 'form-control'}),
+            'category': forms.Select(
+                choices=choice_list, attrs={'class': 'form-control'}),
+            'content': SummernoteWidget(
+                attrs={'class': 'summernote'}),
+            'excerpt': SummernoteWidget(
+                attrs={'class': 'summernote', 'placeholder': 'text'}),
         }
 
 
@@ -50,8 +59,10 @@ class CommentForm(forms.ModelForm):
 
 
 class ContactForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control', }))
-    message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', }))
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={'class': 'form-control', }))
+    message = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control', }))
 
 
 class ProfileForm(forms.ModelForm):
