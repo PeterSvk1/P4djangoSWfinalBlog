@@ -20,23 +20,24 @@
             <input type="hidden" name="search" value="{{ search }}">
         </form>
     </div>
+
     {% if no_results %}
     <div class="alert alert-warning" role="alert">
         Nothing found for "{{ search }}". Please try to search something else.
     </div>
-{% endif %}
+    {% endif %}
 
     {% for post in object_list %}
     <div class="card mb-4 blog-card">
         <div class="card-body">
             <span class="card-img-top mb-3">{% cloudinary post.featured_image %}</span>
             <h5 class="card-title">{{ post.title|safe }}</h5>
-            <p class="card-author" style="background-color: #f0f0f0; padding: 5px;"><bold>By {{ post.author }}</bold></p>
+            <p class="card-author" style="background-color: #f0f0f0; padding: 5px;"><strong>By {{ post.author }}</strong></p>
             <p class="card-text">{{ post.excerpt|safe }}</p>
             <p class="card-date" style="background-color: #f0f0f0; padding: 5px;">{{ post.post_date }}</p>
             <div class="d-flex justify-content-between align-items-center">
                 <p class="card-category mb-0">
-                    <a href="{% url 'category' post.category|slugify %}" class="btn btn-warning btn-sm"><bold>{{ post.category }}</bold></a>
+                    <a href="{% url 'category' post.category|slugify %}" class="btn btn-warning btn-sm"><strong>{{ post.category }}</strong></a>
                 </p>
                 <p class="card-likes mb-0 ms-3">
                     <!-- Non-clickable Like Button with Number of Likes -->
