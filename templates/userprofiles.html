@@ -41,7 +41,7 @@
                                 </li>
                             </ul>
                             <div class="post-content">
-                                <p>{{ current_user.description|safe }}</p>
+                                {{ current_user.description|safe }}
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             <li class="list-group-item">
                                 <a href="{% url 'details' post.pk %}"><strong>{{ post.title }}</strong></a> 
                                 <small>{{ post.post_date }}</small>
-                                <p>{{ post.content|truncatewords:20|safe }}</p>
+                                {{ post.content|truncatewords:20|safe }}
                             </li>
                             {% endfor %}
                         </ul>

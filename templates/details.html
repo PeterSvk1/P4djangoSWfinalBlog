@@ -16,7 +16,7 @@
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="card-img-top mb-3">
-                        {% cloudinary post.featured_image %}
+                        {% cloudinary post.featured_image format="jpg" quality="auto" width="300" height="200" crop="fill" alt="Picture of {{ post.title }}" %}
                     </div>
                     <div class="card mb-4">
                         <div class="card-body">
@@ -29,7 +29,7 @@
                                 </li>
                                 <li class="list-inline-item">
                                     <p class="card-category mb-0">
-                                        <a href="{% url 'category' post.category|slugify %}" class="btn btn-warning btn-sm"><bold>{{ post.category }}</bold></a>
+                                        <a href="{% url 'category' post.category|slugify %}" class="btn btn-warning btn-sm">{{ post.category }}</a>
                                     </p>
                                 </li>
                                 {% if user.is_authenticated and user.id == post.author.id %}
