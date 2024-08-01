@@ -51,12 +51,16 @@ It was very interresting experience and I made lots of mess during development o
 
 # Design
 
+## Fonts
+I used regular roboto fonts from google fonts, nothing fancy.
+
+
 ## color Scheme
 ![Responsice Mockup](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/color_scheme.png)
 
 Also used background from google.
 
-# Tesing
+# Testing
 Can be accessed here
 
 # Technologies Used
@@ -130,3 +134,13 @@ For deployment this project on Heroku, please follow these steps:
 3. Open a terminal and navigate to the directory whre you want to clone the project.
 4. Type following command and paste url "git clone <url>"
 5. Press Enter and the project will be cloned to you local machine.
+
+# Credits
+- Creating search bar https://www.youtube.com/watch?v=VL5ZNCjXEbw
+- https://www.youtube.com/@AdrianTwarog (Creating the navbar)
+- https://www.youtube.com/@Codemycom (Django walkthrough)
+- Inspiration and some of the code of this project were taken from [Code Institute walkthrough project](https://github.com/Code-Institute-Solutions/Django3blog) and fellow students at Code Institue.
+
+# Acknowledgements
+- I want to thanks to Code Institute for learning material and support.
+- Slack Code Institute community for all issues resolved and support.
