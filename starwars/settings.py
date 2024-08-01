@@ -109,10 +109,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'starwars.wsgi.application'
 SUMMERNOTE_THEME = 'bs3'
 
- SUMMERNOTE_CONFIG = {
- You can put custom Summernote settings
+SUMMERNOTE_CONFIG = {
+# You can put custom Summernote settings
     'summernote': {
-  Change editor size
+# Change editor size
         'width': '100%',
         'height': '500px',
     },
