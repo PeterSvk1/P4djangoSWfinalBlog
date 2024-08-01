@@ -8,7 +8,7 @@ The aim of this project is to create a community where Star Wars enthusiasts can
 ## User Experience
 The goal of this project is to provide a platform for users where they share their stories with other users and find inspiration.
 
-![Responsice Mockup](https://github.com/PeterSvk1/Project-3/blob/main/views/ui.jpg)
+![Responsice Mockup](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/responsive_pic.png)
 
 ## User stories
 |      | As a non-logged in user |
