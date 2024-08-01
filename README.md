@@ -56,9 +56,10 @@ I used regular roboto fonts from google fonts, nothing fancy.
 
 
 ## color Scheme
-![Responsice Mockup](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/color_scheme.png)
+![Color_scheme](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/color_scheme.png)
 
 Also used background from google.
+![Fonts](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/fonts.png)
 
 # Testing
 Can be accessed here
