@@ -9,8 +9,8 @@ body {
     font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
-    background-color: #f8f9fa;
-    overflow-x: hidden; 
+    /*background-color: #f8f9fa;
+    overflow-x: hidden;*/ 
 }
 
 main#content {
@@ -18,7 +18,7 @@ main#content {
 }
 
 #bg {
-    background-image: url(https://res.cloudinary.com/dg5lyidc8/image/upload/v1720825881/static/background.d34a8d4af637.jpg);
+    background-image: url(https://res.cloudinary.com/dg5lyidc8/image/upload/v1720825881/static/background.d34a8d4af637.jpg);  
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center center;
