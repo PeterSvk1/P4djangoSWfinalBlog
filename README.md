@@ -51,6 +51,9 @@ It was very interresting experience and I made lots of mess during development o
 
 # Design
 
+## WireFrames
+Please find Wireframes [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes.md) 
+
 ## Fonts
 I used regular roboto fonts from google fonts, nothing fancy.
 
