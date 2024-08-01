@@ -1,5 +1,27 @@
 # StarWars blog
 
+# Table of content
+- [StarWars blog](#starwars-blog)
+  * [Introduction](#introduction)
+  * [User Experience](#user-experience)
+  * [User stories](#user-stories)
+  * [Scopes](#scopes)
+  * [Agile Methodology](#agile-methodology)
+- [Design](#design)
+  * [WireFrames](#wireframes)
+  * [Fonts](#fonts)
+  * [color Scheme](#color-scheme)
+- [Testing](#testing)
+- [Technologies Used](#technologies-used)
+- [Python packages](#python-packages)
+- [Deployement](#deployement)
+  * [Deploying on Heroku](#deploying-on-heroku)
+  * [To Fork this repository:](#to-fork-this-repository-)
+  * [Cloning this Project](#cloning-this-project)
+- [Credits](#credits)
+- [Acknowledgements](#acknowledgements)
+
+
 ## Introduction
 This is a Star Wars Blog Project using Django Framework with an Agile methodology approach. This project is a web application deployed on Heroku that allows fans to share their insights, theories, and adventures within the Star Wars universe. The blog is built using the powerful Django framework for Python.
 
@@ -52,18 +74,18 @@ It was very interresting experience and I made lots of mess during development o
 # Design
 
 ## WireFrames
-Please find Wireframes for deskop and mobile phones [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes.md)
+Please find Wireframes for deskop and mobile phones [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes.md) .
 I did wireframes for phones and deskop only because everyone uses these devices.
 
 ## Fonts
 I used regular roboto fonts from google fonts, nothing fancy.
-
+![Fonts](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/fonts.png)
 
 ## color Scheme
 ![Color_scheme](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/color_scheme.png)
 
-Also used background from google.
-![Fonts](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/fonts.png)
+Also used background picture from google.
+
 
 # Testing
 Can be accessed here
