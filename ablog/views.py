@@ -155,9 +155,9 @@ def SectionView(request, cats):
         {'cats': cats.title(), 'category_posts': category_posts})
 
 
-def ViewAllcategories(request):
-    cat_all = Category.objects.all()
-    return render(request, 'allcategories.html', {'cat_all': cat_all})
+#def ViewAllcategories(request):
+#    cat_all = Category.objects.all()
+#    return render(request, 'allcategories.html', {'cat_all': cat_all})
 
 
 @login_required

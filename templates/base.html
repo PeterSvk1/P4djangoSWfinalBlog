@@ -59,8 +59,6 @@
                         {% if user.profile %}
                             <li><a class="dropdown-item" href="{% url 'editprofile' user.profile.id %}">Edit Profile</a></li>
                             <li><a class="dropdown-item" href="{% url 'userprofile' user.profile.id %}">User Profile</a></li>
-                        {% else %}
-                            <li><a class="dropdown-item" href="{% url 'createprofilepage' %}">Create Profile</a></li>
                         {% endif %}
                     </ul>
                 </li>
