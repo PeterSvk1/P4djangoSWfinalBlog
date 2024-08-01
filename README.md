@@ -52,3 +52,81 @@ It was very interresting experience and I made lots of mess during development o
 # Design
 
 ## color Scheme
+![Responsice Mockup](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/color_scheme.png)
+
+Also used background from google.
+
+# Tesing
+Can be accessed here
+
+# Technologies Used
+- HTML 5: Provides the main structure of the website.
+- CSS 3: Used for styling the website.
+- Bootstrap: Used for general styling and responsiveness of the website.
+- Python: Used for the website's backend development.
+- JavaScript: Used for website scripts
+- Django: Used as the web framework.
+- Cloudinary: Used for storing the website's static files.
+- Database was provided by codeintitute
+- Heroku: Used for hosting the website.
+- GitHub: Used to store the repository.
+- GitPod: Used as the workspace for the project.
+- Balsamiq: Used for wireframe planning.
+- Font Awesome: Used for icons on the website.
+- Google Fonts: Used for fonts on the website.
+- Favicon.ico: Used for generating the website favicon.
+- colorcodefinder: used to find color pallette for project
+- Google Chrome: Used for main testing of the website on all devices.
+- Google Chrome Lighthouse: Used for testing the performance of each page.
+- W3C HTML Validator: Used for validating the HTML code.
+- Jigsaw CSS Validator: Used for validating the CSS code.
+- Ci Python Linter: Used for validating the Python code.
+- JSHint: Used for validating the JavaScript code.
+
+# Python packages
+- asgiref==3.8.1
+- cloudinary==1.36.0
+- crispy-bootstrap5==0.7
+- dj-database-url==0.5.0
+- dj3-cloudinary-storage==0.0.6
+- Django==5.0.7
+- django-allauth==0.57.2
+- django-crispy-forms==2.3
+- django-summernote==0.8.20.0
+- django-widget-tweaks==1.5.0
+- gunicorn==22.0.0
+- oauthlib==3.2.2
+- psycopg2==2.9.9
+- PyJWT==2.8.0
+- python3-openid==3.2.0
+- pytz==2024.1
+- requests-oauthlib==2.0.0
+- sqlparse==0.5.1
+- urllib3==1.26.15
+- whitenoise==5.3.0
+
+# Deployement
+
+## Deploying on Heroku
+For deployment this project on Heroku, please follow these steps:
+1. Create Pipfile with all the required dependencies by running the command "pip3 > freeze > requirements.txt" in the terminal.
+2. Go to the Heroku website and create a [Heroku](www.heroku.com) account if you haven't already done so.
+3. Create a new app by clicking the "New" button and selecting "Create a new app".
+4. Choose a name for your app and select your location.
+5. Get your database from codeinstitute.
+6. Back in the Heroku open settings tab and paste database url from codeinstitute and Secret key to Config Vars.
+7. Go to the "Deploy" tab and click on "Connect to GitHub" to connect your Heroku app to your GitHub Depositary
+8. Finally, choose the main branch for deploying. Enable automatic deployment, and then select "manual deploy" to build your app.
+
+## To Fork this repository:
+1. Navigate to GitHub project repository [P4djangoSWfinalBlog ](https://github.com/PeterSvk1/P4djangoSWfinalBlog)
+2. Click on the "Fork" section in the right-hand corner.
+3. Select an owner for the forked repository.
+4. Click "Create fork" button.
+
+## Cloning this Project
+1. Visit [P4djangoSWfinalBlog ](https://github.com/PeterSvk1/P4djangoSWfinalBlog)
+2. Click green button "<> Code", then "Clone or download" button and copy the URL provided.
+3. Open a terminal and navigate to the directory whre you want to clone the project.
+4. Type following command and paste url "git clone <url>"
+5. Press Enter and the project will be cloned to you local machine.
