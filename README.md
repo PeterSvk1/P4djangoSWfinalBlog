@@ -52,7 +52,8 @@ It was very interresting experience and I made lots of mess during development o
 # Design
 
 ## WireFrames
-Please find Wireframes [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes.md) 
+Please find Wireframes for deskop and mobile phones [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes.md)
+I did wireframes for phones and deskop only because everyone uses these devices.
 
 ## Fonts
 I used regular roboto fonts from google fonts, nothing fancy.
