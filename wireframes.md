@@ -20,3 +20,7 @@
 ![catposts](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes/catposts.png)
 - LogOut Page
 ![logout](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes/logout.png)
+- Search page
+![search](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes/search.png)
+- post page
+![postpage](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes/detailpage.png)
