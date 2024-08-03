@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block head_title %}Register{% endblock head_title %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card border-warning shadow-lg" style="max-width: 500px; width: 100%;">
+        <div class="card-header bg-warning text-center">
+            <h1 class="text-dark">Register</h1>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                <strong>Success!</strong> {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <p class="text-center mb-4">Already have an account? Then please <a href="{{ login_url }}" class="text-warning">sign in</a>.</p>
+
+            <form class="mt-8 space-y-6" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                    {{ form.non_field_errors | safe }}
+                    <input type="hidden" name="remember" value="true" />
+                    
+                    <div class="mb-3 text-center">
+                        {{ form.username.errors | safe }}
+                        <div class="input-wrapper mx-auto">
+                            {% render_field form.username placeholder="Username" id="username" name="username" type="text" autocomplete="username" required=True class="form-control" %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 text-center">
+                        {{ form.email.errors | safe }}
+                        <div class="input-wrapper mx-auto">
+                            {% render_field form.email id="email" name="email" placeholder="Email" type="email" autocomplete="email" required=True class="form-control" %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 text-center">
+                        {{ form.password1.errors | safe }}
+                        <div class="input-wrapper mx-auto">
+                            {% render_field form.password1 id="password1" name="password1" placeholder="Password" type="password" autocomplete="current-password" required=True class="form-control" %}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 text-center">
+                        {{ form.password2.errors | safe }}
+                        <div class="input-wrapper mx-auto">
+                            {% render_field form.password2 id="password2" name="password2" placeholder="Confirm Password" type="password" autocomplete="current-password" required=True class="form-control" %}
+                        </div>
+                    </div>
+                </div>
+
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <button type="submit" class="btn btn-warning btn-block">Register &raquo;</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
