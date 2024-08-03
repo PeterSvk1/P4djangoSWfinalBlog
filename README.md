@@ -91,7 +91,7 @@ Also used background picture from google.
 Code Validation:
 Python 
 - Python code was tested using PEP8 Code Institute [Python Linter Validator](https://pep8ci.herokuapp.com/)
-- Python validations can be accessed [here]
+- Python validations can be accessed [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/pythonvalidation.md)
 
 The website has been tested thoroughly on several different browsers.
 
