@@ -12,4 +12,4 @@ models.py
 urls.py
 ![urls](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/pyvalidation/urls.png)
 views.py
-![views](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/pyvalidation/views.png)
+![views1](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/pyvalidation/views1.png)
