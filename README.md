@@ -88,7 +88,19 @@ Also used background picture from google.
 
 
 # Testing
-Can be accessed here
+Code Validation:
+Python 
+- Python code was tested using PEP8 Code Institute [Python Linter Validator](https://pep8ci.herokuapp.com/)
+- Python validations can be accessed [here]
+
+The website has been tested thoroughly on several different browsers.
+
+    Google Chrome
+    Mozilla Firefox
+    Microsoft Edge
+    Safari
+    Opera
+
 
 # Technologies Used
 - HTML 5: Provides the main structure of the website.
