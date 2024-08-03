@@ -1,4 +1,5 @@
 - ablog app
+
 admin.py
 ![admin](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/pyvalidation/admin.png)
 apps.py
@@ -13,3 +14,5 @@ urls.py
 ![urls](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/pyvalidation/urls.png)
 views.py
 ![views1](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/pyvalidation/views1.png)
+
+No Errors were found .
