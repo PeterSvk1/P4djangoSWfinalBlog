@@ -30,28 +30,28 @@
                     <div class="mb-3 text-center">
                         {{ form.username.errors | safe }}
                         <div class="input-wrapper mx-auto">
-                            {% render_field form.username placeholder="Username" id="username" name="username" type="text" autocomplete="username" required=True class="form-control" %}
+                            {% render_field form.username placeholder="Username" id="username" type="text" autocomplete="username" required=True class="form-control" %}
                         </div>
                     </div>
                     
                     <div class="mb-3 text-center">
                         {{ form.email.errors | safe }}
                         <div class="input-wrapper mx-auto">
-                            {% render_field form.email id="email" name="email" placeholder="Email" type="email" autocomplete="email" required=True class="form-control" %}
+                            {% render_field form.email id="email" placeholder="Email" type="email" autocomplete="email" required=True class="form-control" %}
                         </div>
                     </div>
                     
                     <div class="mb-3 text-center">
                         {{ form.password1.errors | safe }}
                         <div class="input-wrapper mx-auto">
-                            {% render_field form.password1 id="password1" name="password1" placeholder="Password" type="password" autocomplete="current-password" required=True class="form-control" %}
+                            {% render_field form.password1 id="password1" placeholder="Password" type="password" autocomplete="current-password" required=True class="form-control" %}
                         </div>
                     </div>
                     
                     <div class="mb-3 text-center">
                         {{ form.password2.errors | safe }}
                         <div class="input-wrapper mx-auto">
-                            {% render_field form.password2 id="password2" name="password2" placeholder="Confirm Password" type="password" autocomplete="current-password" required=True class="form-control" %}
+                            {% render_field form.password2 id="password2" placeholder="Confirm Password" type="password" autocomplete="current-password" required=True class="form-control" %}
                         </div>
                     </div>
                 </div>
