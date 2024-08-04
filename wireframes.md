@@ -24,3 +24,5 @@
 ![search](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes/search.png)
 - post page
 ![postpage](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes/detailpage.png)
+- Delete page
+![delete](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes/delete_page.png)
