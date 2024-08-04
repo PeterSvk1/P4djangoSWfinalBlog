@@ -94,12 +94,12 @@ Python
 Python code was tested using PEP8 Code Institute [Python Linter Validator](https://pep8ci.herokuapp.com/)
 - Python validations can be accessed [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/pythonvalidation.md)
 
-1. HTML code was tested using [W3 Validator](https://validator.w3.org/), 
-2. CSS code was tested using [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/), 
+1. HTML code was tested using [W3 Validator](https://validator.w3.org/) 
+2. CSS code was tested using [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/)
 3. Javascript code was tested using [JSHint](https://jshint.com/)
 - HTML checker, CSS, Jscript can be found [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/HTMLcssJS.md)
 
-Lighthouse testing can be found [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/lighthouse.md) for deskop and phones. I used the most important pages for testing. Pages which contain just  one line of text I tested but didnt include screenshot because I get result ALL 90+ score. Pagers which I tested show lowest perfomance score of 70  but accessibility is always over 95. [LightHouse testing](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/lighthouse.md)
+Lighthouse testing can be found [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/lighthouse.md) for deskop and phones. I used the most important pages for testing. Pages which contain just one line of text I tested but didnt include screenshot because I get result: ALL 90+ score. Web Pages which I tested show lowest perfomance score of 70 but accessibility is always over 95. [LightHouse testing](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/lighthouse.md)
 
 - The website has been tested thoroughly on several different browsers.
 1. Google Chrome

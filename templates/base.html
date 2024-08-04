@@ -81,6 +81,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-white {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}">Logout</a>
                 </li>
+                {% endif %}
+                
+                <!-- Search Form -->
                 <li class="nav-item">
                     <form class="d-flex" action="{% url 'home' %}" method="get">
                         {% csrf_token %}
@@ -88,7 +91,8 @@
                         <button class="btn btn-outline-light" type="submit">Search</button>
                     </form>
                 </li>
-                {% else %}
+                
+                {% if not user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link text-white {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}">Register</a>
                 </li>
