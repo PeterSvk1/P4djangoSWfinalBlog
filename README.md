@@ -94,15 +94,14 @@ Python
 Python code was tested using PEP8 Code Institute [Python Linter Validator](https://pep8ci.herokuapp.com/)
 - Python validations can be accessed [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/pythonvalidation.md)
 
-HTML code was tested using [W3 Validator](https://validator.w3.org/)
-CSS code was tested using [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/)
+HTML code was tested using [W3 Validator](https://validator.w3.org/), 
+CSS code was tested using [Jigsaw W3 Validator](https://jigsaw.w3.org/css-validator/), 
 Javascript code was tested using [JSHint](https://jshint.com/)
 - HTML checker, CSS, Jscript can be found [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/HTMLcssJS.md)
 
 Lighthouse testing can be found here for deskop and phones.
 
 - The website has been tested thoroughly on several different browsers.
-
 1. Google Chrome
 2. Mozilla Firefox
 3. Microsoft Edge
