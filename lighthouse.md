@@ -35,3 +35,5 @@
 
 - user profile page
 ![user](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/lighthouse/user_page.png)
+
+[Back to readme](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/README.md)

@@ -16,3 +16,5 @@ views.py
 ![views1](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/pyvalidation/views1.png)
 
 No Errors were found .
+
+[Back to Readme](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/README.md)

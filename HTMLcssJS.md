@@ -59,4 +59,4 @@ Currently 11 out of 14 pages pass HTML checker.
 
 - Create your new post and Edit your post page:  here I get lots of errors from [summernote widget](https://github.com/summernote/django-summernote). Its really hard to fix errors here, on stack I found Iam not only one who got these errors and cant fix them. Seems its limitation of the [summernote widget](https://github.com/summernote/django-summernote) same as [django-widget-tweaks](https://github.com/jazzband/django-widget-tweaks).
 
-
+[Back to readme](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/README.md)

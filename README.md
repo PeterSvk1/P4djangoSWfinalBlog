@@ -76,6 +76,7 @@ It was very interresting experience and I made lots of mess during development o
 ## WireFrames
 Please find Wireframes for deskop and mobile phones [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes.md) .
 I did wireframes for phones and deskop only because everyone uses these devices.
+- [WireFrames](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes.md)
 
 ## Fonts
 I used regular roboto fonts from google fonts, nothing fancy.
@@ -105,11 +106,13 @@ Python code was tested using PEP8 Code Institute [Python Linter Validator](https
 
 ### Lighthouse
 
-Lighthouse testing can be found [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/lighthouse.md) for deskop and phones. I used the most important pages for testing. Pages which contain just one line of text I tested but didnt include screenshot because I get result: ALL 90+ score. Web Pages which I tested show lowest perfomance score of 70 but accessibility is always over 95. [LightHouse testing](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/lighthouse.md)
+Lighthouse testing can be found [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/lighthouse.md) for deskop and phones. I used the most important pages for testing. Pages which contain just one line of text I tested but didnt include screenshot because I get result: ALL 90+ score. Web Pages which I tested show lowest perfomance score of 70 but accessibility is always over 95. 
+- [LightHouse testing](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/lighthouse.md)
 
 ### Manual Testing
 - I did manual testing of my website. Please access manual test here.
 
+### Browsers
 - The website has been tested thoroughly on several different browsers.
 1. Google Chrome
 2. Mozilla Firefox
