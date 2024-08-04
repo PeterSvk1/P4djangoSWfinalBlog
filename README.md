@@ -27,6 +27,8 @@ This is a Star Wars Blog Project using Django Framework with an Agile methodolog
 
 The aim of this project is to create a community where Star Wars enthusiasts can document their thoughts, showcase artwork, and connect with like-minded individuals. With a user-friendly design, navigating the website to find relevant information is a breeze. Additionally, the project includes an admin interface that allows the administrator to manage content, users, and other aspects of the website.
 
+- Live link -> [Starwars blog](https://projectstarwars-0dcaf97ac1e9.herokuapp.com/)
+
 ## User Experience
 The goal of this project is to provide a platform for users where they share their stories with other users and find inspiration.
 
