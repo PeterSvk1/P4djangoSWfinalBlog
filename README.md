@@ -37,7 +37,7 @@ The goal of this project is to provide a platform for users where they share the
 ## User stories
 |      | As a non-logged in user |
 | ---      | ---       |
-| 1 |  	I want to browse the travel blog and view its content without having to create an account.         |
+| 1 |  	I want to browse the starwars blog and view its content without having to create an account.         |
 | 2 |   I want to register to the website.      |
 | 3 |   I want to contact the site owner via email form without registration needed.     |
 | 4 |   I want to to read something about website before I register.     |
