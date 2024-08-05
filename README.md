@@ -229,7 +229,7 @@ For deployment this project on Heroku, please follow these steps:
 # Credits
 - Creating search bar https://www.youtube.com/watch?v=VL5ZNCjXEbw
 - https://www.youtube.com/@AdrianTwarog (Creating the navbar)
-- https://www.youtube.com/@Codemycom (Django walkthrough)
+- https://www.youtube.com/@Codemycom (Django walkthrough) - lots of ideas was taken from this channel
 - Inspiration and some of the code of this project were taken from [Code Institute walkthrough project](https://github.com/Code-Institute-Solutions/Django3blog) and fellow students at Code Institue.
 
 # Acknowledgements
