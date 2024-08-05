@@ -69,6 +69,8 @@ The goal of this project is to provide a platform for users where they share the
 | 2 |   I want to manage all user accounts in admin panel      |
 | 3 |   I want to give users authority to staff or superuser.    |
 
+- Please find all user stories over [here](https://github.com/users/PeterSvk1/projects/4/views/1)
+
 ## Scopes
 - Create responsive and user-friendly website allowing users to browse, read blogs, search posts.
 - Include user authentication that allows users to register, login to the website for commenting and liking posts.
@@ -80,7 +82,6 @@ The goal of this project is to provide a platform for users where they share the
 
 My Star wars blog project was developed using Agile methodology. Its first time I used agile methology and it was very confusing, I kept on forgetting to do user stories and just kept on working on my project.
 It was very interresting experience and I made lots of mess during development of my project. 
-- Please find user stories over [here](https://github.com/users/PeterSvk1/projects/4/views/1)
 
 # Design
 
