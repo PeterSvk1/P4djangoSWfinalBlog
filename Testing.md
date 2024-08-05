@@ -1,11 +1,10 @@
 # Testing
 
-- Here I tested functionality of my website. Beaware it mght be little bit chaotic.
+- Here I tested functionality of my website. Beaware it might be little bit chaotic.
 
 ### Navigation bar
 
 - As a non-logged in user
-
 
 | -- |Element| Action | wanted result | Score |
 |  -- |   ---      | ---       |  ----   | ---- |
@@ -21,7 +20,6 @@
 
 - As a non-logged in user
 
-
 | -- |Element| Action | wanted result | Score |
 |  -- |   ---      | ---       |  ----   | ---- |
 | 1 |  	 Category| click | redirects to page which informs user to log in | pass|
@@ -30,10 +28,9 @@
 | 4 |    likes| display | User can see how many likes post has | pass|
 | 5 |    delete| display | Render only if user is authenticated | pass|
 | 6 |    pagination| click | allows user to browse posts on website | pass|
-
+| 6 |    Sort option| click | Sorts post by likes or by date | pass|
 
 - Inside post
-
 
 | -- |Element| Action | wanted result | Score |
 |  -- |   ---      | ---       |  ----   | ---- |
@@ -53,11 +50,17 @@
 | 1 |  	 About us| click | "Redirect to Posts" return user to home page with all posts | pass|
 | 2 |    Contact us| click | User fills up form and sends message to admin/admin receive it | pass|
 
+- Registration page and login page.
+
+| -- |Element| Action | wanted result | Score |
+|  -- |   ---      | ---       |  ----   | ---- |
+| 1 |  	 Registration page| click | Lets user register on website after he fills up all fields | pass|
+| 2 |    Login page| click | If user is not registered then login page wont let him logIn | pass|
+| 3 |    Login page| click | If user is registered then login page will let him logIn | pass|
 
 ### Footer
 
-- As a non-logged in user
-
+- As a non-logged in user and also as a logged in user. (works for both same)
 
 | -- |Element| Action | wanted result | Score |
 |  -- |   ---      | ---       |  ----   | ---- |
