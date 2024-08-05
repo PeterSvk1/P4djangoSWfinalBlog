@@ -85,7 +85,7 @@ It was very interresting experience and I made lots of mess during development o
 
 ## WireFrames
 Please find Wireframes for deskop and mobile phones [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes.md) .
-I did wireframes for phones and deskop only because everyone uses these devices.
+I did wireframes for phones and deskop only because everyone uses these devices. Wireframes for both desktop and mobile were created with [Balsamiq](https://balsamiq.com/).
 - [WireFrames](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/wireframes.md)
 
 ## Fonts
@@ -96,6 +96,9 @@ I used regular roboto fonts from google fonts, nothing fancy.
 ![Color_scheme](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/color_scheme.png)
 
 Also used background picture from google.
+
+- Diagram:
+![diagram](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/diagram.png)
 
 # Features
 
