@@ -138,6 +138,7 @@
 | 2 |    New category page| click | Lets user create new category but its working after database restarts | pass|
 | 3 |    Edit profile page | click | Lets user edit bio | pass|
 | 4 |    User profile page | click | Lets user see all his posts, bio, link to edit profile | pass|
+| 5 |    Delete post page | click | Lets user delete selected post if he is the author of the post | pass|
 
 ## Footer
 
