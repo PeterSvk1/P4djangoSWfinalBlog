@@ -65,7 +65,7 @@ The goal of this project is to provide a platform for users where they share the
 - Create responsive and user-friendly website allowing users to browse, read blogs, search posts.
 - Include user authentication that allows users to register, login to the website for commenting and liking posts.
 - Include email API that allows users to send email directly from the website.
-- Inluclude summernote text editor for creating new posts.
+- Include summernote text editor for creating new posts.
 - Optimize website performance, security, and accessibilty using best practices in web development.
 
 ## Agile Methodology
