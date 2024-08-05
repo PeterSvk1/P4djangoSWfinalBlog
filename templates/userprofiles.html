@@ -71,7 +71,7 @@
     </div>
     {% else %}
     <div class="alert alert-danger" role="alert">
-        <p>You are not authorized to view this profile.</p>
+        <p class="text-center">Please <a href="{% url 'account_signup' %}" class="btn btn-primary">Register</a>.</p>
     </div>
     {% endif %}
 </div>
