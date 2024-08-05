@@ -139,7 +139,7 @@ Lighthouse testing can be found [here](https://github.com/PeterSvk1/P4djangoSWfi
 - [LightHouse testing](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/lighthouse.md)
 
 ### Manual Testing
-- I did manual testing of my website. Please access manual test here.
+- I did manual testing of my website. Please access manual test [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/Testing.md).
 
 ### Browsers
 - The website has been tested thoroughly on several different browsers.
