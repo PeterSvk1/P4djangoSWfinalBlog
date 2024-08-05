@@ -19,10 +19,10 @@
                         </form>
                     </div>
                 {% else %}
-                <p class="text-center">Please <a href="{% url 'account_signup' %}" class="btn btn-primary">Register</a> to edit posts.</p>
+                <p class="text-center"><a href="{% url 'account_signup' %}" class="btn btn-primary">Register</a> to edit posts.</p>
                 {% endif %}
             {% else %}
-                <p class="text-center">Please <a href="{% url 'account_signup' %}" class="btn btn-primary">Register</a> to edit posts.</p>
+                <p class="text-center"><a href="{% url 'account_signup' %}" class="btn btn-primary">Register</a> to edit posts.</p>
             {% endif %}
         </div>
     </div>
