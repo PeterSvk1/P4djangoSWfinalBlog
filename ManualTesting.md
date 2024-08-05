@@ -1,1 +1,0 @@
-[Back to Readme](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/README.md)
