@@ -5,6 +5,8 @@
 ### Navigation bar
 
 - As a non-logged in user
+
+
 | -- |Element| Action | wanted result | Score |
 |  -- |   ---      | ---       |  ----   | ---- |
 | 1 |  	 Logo| click | shows page with all posts | pass|
