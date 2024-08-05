@@ -21,7 +21,7 @@ class Post(models.Model):
     content = models.TextField()
     post_date = models.DateTimeField(auto_now_add=True)
     excerpt = models.TextField(blank=True)
-    category = models.CharField(max_length=200, default='starwars')
+    category = models.CharField(default='starwars')
     featured_image = CloudinaryField('image', default=default_image)
     likes = models.ManyToManyField(User, related_name='blogposts')
     status = models.IntegerField(choices=STATUS, default=0)
@@ -40,7 +40,7 @@ class Post(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=200, default='starwars')
+    name = models.CharField(default='starwars')
 
     def __str__(self):
         return self.name

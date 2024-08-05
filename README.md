@@ -89,6 +89,15 @@ I used regular roboto fonts from google fonts, nothing fancy.
 
 Also used background picture from google.
 
+# Features
+
+Features of this project cann be accessed [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/features.md)
+
+- Possible future features to include:
+1. Upgrade registration / login page to support social authentication in addition to normal registration/login options.
+2. Allow users to upload their own picture into profile.
+3. Allow users to change their username and email.
+
 
 # Testing
 
