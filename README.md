@@ -100,6 +100,13 @@ Also used background picture from google.
 - Diagram:
 ![diagram](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/assets/diagram.png)
 
+Relationships:
+1. User - one to many - Post
+2. Post - one to many - Comment
+3. User - many to many - PostLikes
+4. User - many to many - CommentUpvotes
+5. User - many to many-  CommentDownvotes
+
 # Features
 
 Features of this project can be accessed [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/features.md)
