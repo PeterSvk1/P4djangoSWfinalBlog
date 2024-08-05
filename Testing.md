@@ -84,9 +84,9 @@
 | 6 |    Login to comment| click | redirects to login page | pass|
 | 7 |    Login to like| click | redirects to login page | pass|
 | 8 |    Comment section| display | user can read comments | pass|
-| 9 |    upvote omment| display |Render only if user is authenticated | pass|
+| 9 |    upvote comment| display |Render only if user is authenticated | pass|
 | 10 |    downvote comment| display |Render only if user is authenticated | pass|
-| 11 |    Comment section| display | Number of comments | pass|
+| 11 |    Comment section| display | user can see number of comments | pass|
 
 - Inside post: as a logged in user ( is authenticated )
 
@@ -111,13 +111,6 @@
 | 17 |    Comment delete| click | user can delete comments only if user is authenticated and author of the comment | pass|
 
 
-- Inside Contact us page and About us page : as a non logged in user and logged in user (works for both)
-
-| -- |Element| Action | wanted result | Score |
-|  -- |   ---      | ---       |  ----   | ---- |
-| 1 |  	 About us| click | "Redirect to Posts" return user to home page with all posts | pass|
-| 2 |    Contact us| click | User fills up form and sends message to admin/admin receive it | pass|
-
 ## Registration page and login page.
 
 | -- |Element| Action | wanted result | Score |
@@ -128,7 +121,25 @@
 | 4 |    Login page| click | If user is registered then login page will let him logIn | pass|
 | 5 |    Login/registration page| click | both forms have to be correctly filled out in order to work | pass|
 
-### Footer
+## miscellaneous
+
+- Inside Contact us page and About us page : as a non logged in user and logged in user (works for both)
+
+| -- |Element| Action | wanted result | Score |
+|  -- |   ---      | ---       |  ----   | ---- |
+| 1 |  	 About us| click | "Redirect to Posts" return user to home page with all posts | pass|
+| 2 |    Contact us| click | User fills up form and sends message to admin/admin receive it | pass|
+
+- As a logged in user
+
+| -- |Element| Action | wanted result | Score |
+|  -- |   ---      | ---       |  ----   | ---- |
+| 1 |  	 New post page| click | Lets user to create new post and shows it on home page | pass|
+| 2 |    New category page| click | Lets user create new category but its working after database restarts | pass|
+| 3 |    Edit profile page | click | Lets user edit bio | pass|
+| 4 |    User profile page | click | Lets user see all his posts, bio, link to edit profile | pass|
+
+## Footer
 
 - As a non-logged in user and also as a logged in user. (works for both)
 
