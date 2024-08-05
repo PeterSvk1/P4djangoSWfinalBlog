@@ -79,7 +79,8 @@ The goal of this project is to provide a platform for users where they share the
 ## Agile Methodology
 
 My Star wars blog project was developed using Agile methodology. Its first time I used agile methology and it was very confusing, I kept on forgetting to do user stories and just kept on working on my project.
-It was very interresting experience and I made lots of mess during development of my project. Please find user stories over [here](https://github.com/users/PeterSvk1/projects/4/views/1)
+It was very interresting experience and I made lots of mess during development of my project. 
+- Please find user stories over [here](https://github.com/users/PeterSvk1/projects/4/views/1)
 
 # Design
 
