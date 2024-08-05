@@ -10,7 +10,7 @@
 | -- |Element| Action | wanted result | Score |
 |  -- |   ---      | ---       |  ----   | ---- |
 | 1 |  	 Logo| click | shows page with all posts | pass|
-| 2 |    Search| click | user search for author and page shows posts with author name | pass|
+| 2 |    Search| click | user search for author, shows posts with author name | pass|
 | 5 |    Search| click | shows no post message  if user search for random letters ex.:"dgdsfgd" |pass|
 | 3 |    Register| click | redirect to registration page | pass|
 | 4 |    Login| click | redirects to login page | pass|
@@ -27,8 +27,9 @@
 | 1 |  	 Category| click | redirects to page which informs user to log in | pass|
 | 2 |    Read more| click | redirects user to post which he wants to read | pass|
 | 3 |    Edit| display | Render only if user is authenticated | pass|
-| 4 |    delete| display | Render only if user is authenticated | pass|
-| 5 |    pagination| click | allows user to browse posts on website | pass|
+| 4 |    likes| display | User can see how many likes post has | pass|
+| 5 |    delete| display | Render only if user is authenticated | pass|
+| 6 |    pagination| click | allows user to browse posts on website | pass|
 
 
 - Inside post
@@ -45,6 +46,12 @@
 | 6 |    login to like| click | redirects to login page | pass|
 | 7 |    Comment section| display | user can read comments | pass|
 
+- Inside Contact us page and About us page
+
+| -- |Element| Action | wanted result | Score |
+|  -- |   ---      | ---       |  ----   | ---- |
+| 1 |  	 About us| click | "Redirect to Posts" return user to home page with all posts | pass|
+| 2 |    Contact us| click | User fills up form and sends message to admin/admin receive it | pass|
 
 
 ### Footer
