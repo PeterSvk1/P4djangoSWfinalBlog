@@ -21,7 +21,7 @@
 
 ### Main Pages
 
-- Home Page its greets users upn theil login/registration. so they can start reading posts.
+- Home Page its greets users upon their login/registration. so they can start reading posts.
 
 ![home](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/features/home_page.png)
 

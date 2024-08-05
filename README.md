@@ -2,6 +2,7 @@
 
 # Table of content
 - [StarWars blog](#starwars-blog)
+- [Table of content](#table-of-content)
   * [Introduction](#introduction)
   * [User Experience](#user-experience)
   * [User stories](#user-stories)
@@ -11,7 +12,14 @@
   * [WireFrames](#wireframes)
   * [Fonts](#fonts)
   * [color Scheme](#color-scheme)
+- [Features](#features)
 - [Testing](#testing)
+  * [Code Validation:](#code-validation-)
+    + [Python](#python)
+    + [HTML, CSS, JSHint](#html--css--jshint)
+    + [Lighthouse](#lighthouse)
+    + [Manual Testing](#manual-testing)
+    + [Browsers](#browsers)
 - [Technologies Used](#technologies-used)
 - [Python packages](#python-packages)
 - [Deployement](#deployement)
@@ -91,7 +99,7 @@ Also used background picture from google.
 
 # Features
 
-Features of this project cann be accessed [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/features.md)
+Features of this project can be accessed [here](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/features.md)
 
 - Possible future features to include:
 1. Upgrade registration / login page to support social authentication in addition to normal registration/login options.
