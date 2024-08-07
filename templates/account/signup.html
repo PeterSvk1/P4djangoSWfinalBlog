@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load widget_tweaks %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}Register{% endblock head_title %}
 
@@ -23,37 +23,17 @@
 
             <form class="mt-8 space-y-6" id="signup_form" method="post" action="{% url 'account_signup' %}">
                 {% csrf_token %}
-                <div class="form-group mb-3">
-                    {{ form.non_field_errors | safe }}
-                    <input type="hidden" name="remember" value="true" />
-                    
-                    <div class="mb-3 text-center">
-                        {{ form.username.errors | safe }}
-                        <div class="input-wrapper mx-auto">
-                            {% render_field form.username placeholder="Username" id="username" type="text" autocomplete="username" required=True class="form-control" %}
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3 text-center">
-                        {{ form.email.errors | safe }}
-                        <div class="input-wrapper mx-auto">
-                            {% render_field form.email id="email" placeholder="Email" type="email" autocomplete="email" required=True class="form-control" %}
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3 text-center">
-                        {{ form.password1.errors | safe }}
-                        <div class="input-wrapper mx-auto">
-                            {% render_field form.password1 id="password1" placeholder="Password" type="password" autocomplete="current-password" required=True class="form-control" %}
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3 text-center">
-                        {{ form.password2.errors | safe }}
-                        <div class="input-wrapper mx-auto">
-                            {% render_field form.password2 id="password2" placeholder="Confirm Password" type="password" autocomplete="current-password" required=True class="form-control" %}
-                        </div>
-                    </div>
+                
+                {{ form.username|as_crispy_field }}
+                {{ form.email|as_crispy_field }}
+                
+                <div id="id_password1_helptext" class="form-group">
+                    {{ form.password1|as_crispy_field }}
+                </div>
+                
+                <div class="form-group">
+                    {{ form.password2|as_crispy_field }}
+                    <small id="password-confirm-help" class="form-text text-muted">Please confirm your password.</small>
                 </div>
 
                 {% if redirect_field_value %}
