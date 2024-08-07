@@ -26,7 +26,14 @@
                                             <p class="card-author" style="background-color: #f0f0f0; padding: 5px;">By {{ post.author }}</p>
                                             <div class="card-text">{{ post.excerpt|safe }}</div>
                                             <p class="card-date" style="background-color: #f0f0f0; padding: 5px;">{{ post.post_date }}</p>
-                                            <a href="{% url 'details' post.pk %}" class="btn btn-primary">Read More</a>
+                                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <a href="{% url 'details' post.pk %}" class="btn btn-primary">Read More</a>
+                                                <div class="card-likes">
+                                                    <button class="btn btn-secondary btn-sm">
+                                                        <span class="text-danger">&hearts;</span> Likes {{ post.num_likes }} <span class="text-danger">&hearts;</span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

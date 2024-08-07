@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+
 {% block head_title %}Contact Us{% endblock head_title %}
 
 {% block content %}
@@ -7,21 +8,23 @@
     <div class="card mb-4">
         <h1 class="card-header bg-warning text-center">Contact Us</h1>
         <div class="card-body">
-            <p class="card-text">We’re thrilled to hear from fellow Star Wars enthusiasts! Whether you have questions about our content, suggestions for future topics, or just want to share your thoughts and experiences from the galaxy far, far away, this is the place to reach out.</p>
-            <p class="card-text">Your feedback helps us enhance our blog and serve the Star Wars community better. If you’ve got ideas, comments, or simply wish to connect with us, please fill out the form below. We promise to respond as swiftly as a Jedi in hyperspace!</p>
+            <p class="card-text mb-4">We’re thrilled to hear from fellow Star Wars enthusiasts! Whether you have questions about our content, suggestions for future topics, or just want to share your thoughts and experiences from the galaxy far, far away, this is the place to reach out.</p>
+            <p class="card-text mb-4">Your feedback helps us enhance our blog and serve the Star Wars community better. If you’ve got ideas, comments, or simply wish to connect with us, please fill out the form below. We promise to respond as swiftly as a Jedi in hyperspace!</p>
+            <p class="card-text mt-4">May the Force be with you as you reach out! We look forward to connecting with you and continuing our shared journey through the Star Wars universe.</p>
             <form method="post" action="{% url 'contact' %}">
                 {% csrf_token %}
-                <div class="form-group">
+                <div class="form-group mb-4">
                     <label for="id_email">Email address</label>
                     {{ form.email }}
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-4">
                     <label for="id_message">Your Message</label>
                     {{ form.message }}
                 </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-3">Send Message</button>
+                </div>
             </form>
-            <p class="card-text mt-3">May the Force be with you as you reach out! We look forward to connecting with you and continuing our shared journey through the Star Wars universe.</p>
         </div>
     </div>
 </div>

@@ -2,7 +2,6 @@
 {% block head_title %}Create New Post{% endblock head_title %}
 
 {% block content %}
-
     {% if user.is_authenticated %}
         <div class="card mb-4">
             <h1 class="card-header bg-warning text-center">Create Your Post</h1>
@@ -11,13 +10,12 @@
                     {% csrf_token %}
                     {{ form.media }}
                     {{ form.as_p }}
-                    <div class="form-group">
-                        <a href="{% url 'home' %}" class="btn btn-dark">Back</a>
-                        <button type="submit" class="btn btn-primary">Post</button>
+                    <div class="form-group mt-3">
+                        <a href="{% url 'home' %}" class="btn btn-dark btn-lg">Back</a>
+                        <button type="submit" class="btn btn-primary btn-lg">Post</button>
                     </div>
                 </form>
             </div>
         </div>
-    
     {% endif %}
 {% endblock %}
