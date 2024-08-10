@@ -151,3 +151,6 @@
 | 1 |  	 Socials| click | opens social links in new window | pass|
 | 2 |    Contact Us| click | redirects user to contact page | pass|
 | 3 |    About us| click | redirects user to about us page |pass|
+
+
+[Back to Readme](https://github.com/PeterSvk1/P4djangoSWfinalBlog/blob/main/README.md)
